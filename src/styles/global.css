@@ -286,7 +286,7 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
 /* ---------- Hero ---------- */
 .hero {
   position: relative; overflow: hidden; background: var(--ink); color: #fff;
-  min-height: min(84vh, 700px); display: flex; align-items: center;
+  min-height: min(94vh, 860px); display: flex; align-items: center;
 }
 .hero .bg { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: .38; }
 .hero::after {
