@@ -22,4 +22,73 @@ const nav = t.services.blocks.map((b) => ({ label: b.title, hash: b.id }));
       ))
     }
   </DocLayout>
+
+  <section class="section-alt">
+    <div class="container">
+      <div class="section-head center">
+        <div class="kicker center">{t.services.process.kicker}</div>
+        <h2 class="h-title">{t.services.process.title}</h2>
+      </div>
+      <div class="process-flow">
+        {
+          t.services.process.steps.map((s, i) => (
+            <>
+              <div class="process-step" data-reveal>
+                <span class="ps-no">{s.no}</span>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+              </div>
+              {i < t.services.process.steps.length - 1 && (
+                <div class="process-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6" /></svg>
+                </div>
+              )}
+            </>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+  .process-flow {
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .process-step {
+    flex: 1;
+    background: var(--white);
+    border: 1px solid var(--line);
+    padding: 26px 22px;
+    text-align: center;
+  }
+  .ps-no {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: #fff;
+    font-family: var(--ff-display);
+    font-weight: 700;
+    font-size: .88rem;
+    margin-bottom: 14px;
+  }
+  .process-step h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+  .process-step p { font-size: .88rem; color: var(--steel); margin: 0; }
+  .process-arrow {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--line);
+  }
+  @media (max-width: 760px) {
+    .process-flow { flex-direction: column; }
+    .process-arrow { transform: rotate(90deg); padding: 4px 0; }
+  }
+</style>

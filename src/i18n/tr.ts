@@ -642,6 +642,16 @@ const tr = {
         imgAlt: 'Test',
       },
     ],
+    process: {
+      kicker: 'Çalışma Sürecimiz',
+      title: 'İhtiyaçtan Çözüme',
+      steps: [
+        { no: '01', title: 'Danışmanlık', text: 'Müşteri ile teknik görüşme ve ihtiyacın netleştirilmesi.' },
+        { no: '02', title: 'Ürün Tasarımı', text: 'AR-GE ve tasarım çalışmaları ile çözüm önerisinin geliştirilmesi.' },
+        { no: '03', title: 'Ürün Geliştirme', text: 'Numune üretimi ve sürekli iyileştirme çalışmaları.' },
+        { no: '04', title: 'Test ve Doğrulama', text: 'Standartlara uygunluğun test edilmesi ve onaylanması.' },
+      ],
+    },
   },
 
   quality: {
@@ -667,15 +677,15 @@ const tr = {
       title: 'Sertifikalarımız',
       intro: 'Kalite yönetim sistemlerimiz ve ürün uygunluğumuz, bağımsız kuruluşlarca belgelendirilmiştir.',
       items: [
-        { code: 'ISO 9001', name: 'Kalite Yönetim Sistemi', img: '/img/iso9001.webp' },
-        { code: 'ISO 10002', name: 'Müşteri Memnuniyeti YS', img: '/img/iso10002.webp' },
-        { code: 'ISO 45001', name: 'İş Sağlığı ve Güvenliği YS', img: '/img/iso45001.webp' },
-        { code: 'CE', name: 'Geri Dönüşür Kafes', img: '/img/ce-geri-donusum.webp' },
-        { code: 'CE', name: 'Rijit Kafes', img: '/img/ce-rijit.webp' },
-        { code: 'CE', name: 'Katlanabilir Kafes', img: '/img/ce-katlanabilir.webp' },
-        { code: 'ISO 14001', name: 'Çevre Yönetim Sistemi', img: '/img/iso14001.webp' },
-        { code: 'I-REC', name: 'Yeşil Enerji (Merkez)', img: '/img/irec-merkez.webp' },
-        { code: 'I-REC', name: 'Yeşil Enerji (Şube)', img: '/img/irec-sube.webp' },
+        { code: 'ISO 9001', name: 'Kalite Yönetim Sistemi', desc: 'Ürün ve hizmet kalitesinde sürekli iyileştirmeyi standartlaştıran uluslararası kalite yönetim sistemi.', img: '/img/iso9001.webp' },
+        { code: 'ISO 10002', name: 'Müşteri Memnuniyeti YS', desc: 'Müşteri şikayet ve taleplerinin şeffaf ve adil şekilde ele alınmasını sağlayan yönetim sistemi.', img: '/img/iso10002.webp' },
+        { code: 'ISO 45001', name: 'İş Sağlığı ve Güvenliği YS', desc: 'Çalışan sağlığı ve güvenliği risklerinin proaktif olarak yönetildiğini belgeleyen uluslararası standart.', img: '/img/iso45001.webp' },
+        { code: 'CE', name: 'Geri Dönüşür Kafes', desc: 'Avrupa Birliği teknik düzenlemelerine uygunluğu belgeleyen ürün işareti.', img: '/img/ce-geri-donusum.webp' },
+        { code: 'CE', name: 'Rijit Kafes', desc: 'Avrupa Birliği teknik düzenlemelerine uygunluğu belgeleyen ürün işareti.', img: '/img/ce-rijit.webp' },
+        { code: 'CE', name: 'Katlanabilir Kafes', desc: 'Avrupa Birliği teknik düzenlemelerine uygunluğu belgeleyen ürün işareti.', img: '/img/ce-katlanabilir.webp' },
+        { code: 'ISO 14001', name: 'Çevre Yönetim Sistemi', desc: 'Üretim süreçlerindeki çevresel etkilerin sistematik şekilde yönetildiğini gösteren çevre yönetim standardı.', img: '/img/iso14001.webp' },
+        { code: 'I-REC', name: 'Yeşil Enerji (Merkez)', desc: 'Kullanılan enerjinin yenilenebilir kaynaklardan sağlandığını uluslararası düzeyde belgeleyen sertifika.', img: '/img/irec-merkez.webp' },
+        { code: 'I-REC', name: 'Yeşil Enerji (Şube)', desc: 'Kullanılan enerjinin yenilenebilir kaynaklardan sağlandığını uluslararası düzeyde belgeleyen sertifika.', img: '/img/irec-sube.webp' },
       ],
     },
     membership: {

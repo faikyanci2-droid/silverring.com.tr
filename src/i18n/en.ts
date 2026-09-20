@@ -638,6 +638,16 @@ const en: SiteContent = {
         imgAlt: 'Testing',
       },
     ],
+    process: {
+      kicker: 'Our Process',
+      title: 'From Need to Solution',
+      steps: [
+        { no: '01', title: 'Consultancy', text: 'Technical discussion with the customer to clarify the requirement.' },
+        { no: '02', title: 'Product Design', text: 'R&D and design work to develop the proposed solution.' },
+        { no: '03', title: 'Product Development', text: 'Sample production and continuous improvement work.' },
+        { no: '04', title: 'Test & Verification', text: 'Testing and confirming conformity with the required standards.' },
+      ],
+    },
   },
 
   quality: {
@@ -663,15 +673,15 @@ const en: SiteContent = {
       title: 'Our Certificates',
       intro: 'Our quality management systems and product conformity are certified by independent bodies.',
       items: [
-        { code: 'ISO 9001', name: 'Quality Management System', img: '/img/iso9001.webp' },
-        { code: 'ISO 10002', name: 'Customer Satisfaction MS', img: '/img/iso10002.webp' },
-        { code: 'ISO 45001', name: 'Occupational Health & Safety MS', img: '/img/iso45001.webp' },
-        { code: 'CE', name: 'Collapsible Cage', img: '/img/ce-geri-donusum.webp' },
-        { code: 'CE', name: 'Rigid Cage', img: '/img/ce-rijit.webp' },
-        { code: 'CE', name: 'Foldable Cage', img: '/img/ce-katlanabilir.webp' },
-        { code: 'ISO 14001', name: 'Environmental Management System', img: '/img/iso14001.webp' },
-        { code: 'I-REC', name: 'Green Energy (Headquarters)', img: '/img/irec-merkez.webp' },
-        { code: 'I-REC', name: 'Green Energy (Branch)', img: '/img/irec-sube.webp' },
+        { code: 'ISO 9001', name: 'Quality Management System', desc: 'The international quality management standard for consistent, continuously improving products and services.', img: '/img/iso9001.webp' },
+        { code: 'ISO 10002', name: 'Customer Satisfaction MS', desc: 'A management system ensuring customer complaints and requests are handled transparently and fairly.', img: '/img/iso10002.webp' },
+        { code: 'ISO 45001', name: 'Occupational Health & Safety MS', desc: 'The international standard certifying proactive management of employee health and safety risks.', img: '/img/iso45001.webp' },
+        { code: 'CE', name: 'Collapsible Cage', desc: 'A product marking certifying conformity with European Union technical regulations.', img: '/img/ce-geri-donusum.webp' },
+        { code: 'CE', name: 'Rigid Cage', desc: 'A product marking certifying conformity with European Union technical regulations.', img: '/img/ce-rijit.webp' },
+        { code: 'CE', name: 'Foldable Cage', desc: 'A product marking certifying conformity with European Union technical regulations.', img: '/img/ce-katlanabilir.webp' },
+        { code: 'ISO 14001', name: 'Environmental Management System', desc: 'A standard certifying that environmental impacts across production are managed systematically.', img: '/img/iso14001.webp' },
+        { code: 'I-REC', name: 'Green Energy (Headquarters)', desc: 'An internationally recognised certificate confirming energy use is sourced from renewables.', img: '/img/irec-merkez.webp' },
+        { code: 'I-REC', name: 'Green Energy (Branch)', desc: 'An internationally recognised certificate confirming energy use is sourced from renewables.', img: '/img/irec-sube.webp' },
       ],
     },
     membership: {

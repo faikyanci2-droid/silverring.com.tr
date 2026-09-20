@@ -4,6 +4,7 @@ import PageHead from '../PageHead.astro';
 import DocLayout from '../DocLayout.astro';
 import DocBlock from '../DocBlock.astro';
 import Icon from '../Icon.astro';
+import type { IconName } from '../Icon.astro';
 import { useContent, localizedPath, type Lang } from '../../i18n';
 
 interface Props {
@@ -13,6 +14,7 @@ const { lang } = Astro.props;
 const t = useContent(lang);
 const about = t.corporate.about;
 const mv = t.corporate.missionVision;
+const why = t.home.why;
 const nav = t.corporate.blocks.map((b) => ({ label: b.title, hash: b.id }));
 const contactPath = localizedPath('contact', lang);
 ---
@@ -49,6 +51,27 @@ const contactPath = localizedPath('contact', lang);
           <h3>{mv.vision.title}</h3>
           <p>{mv.vision.text}</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">{why.kicker}</div>
+        <h2 class="h-title">{why.title}</h2>
+      </div>
+      <div class="num-grid">
+        {
+          why.cards.map((c) => (
+            <article class="num-card" data-reveal>
+              <span class="no">{c.no}</span>
+              <span class="ic"><Icon name={c.icon as IconName} /></span>
+              <h3>{c.title}</h3>
+              <p>{c.text}</p>
+            </article>
+          ))
+        }
       </div>
     </div>
   </section>

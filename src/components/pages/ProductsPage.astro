@@ -15,9 +15,23 @@ const catalogPath = localizedPath('catalog', lang);
 <BaseLayout lang={lang} routeKey="products" title={t.meta.products.title} description={t.meta.products.description} image="/img/banner-aksesuar.webp">
   <PageHead lang={lang} crumb={t.nav.products} title={t.nav.products} lead={t.products.lead} bg="/img/banner-aksesuar.webp" />
 
+  <div class="product-tabs-wrap">
+    <div class="container">
+      <div class="product-tabs" role="tablist" data-product-tabs>
+        {
+          t.products.groups.map((g, gi) => (
+            <a href={`#${g.id}`} class={`product-tab${gi === 0 ? ' active' : ''}`} data-product-tab={g.id}>
+              {g.title}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
   {
     t.products.groups.map((g, gi) => (
-      <section id={g.id} class={gi % 2 === 1 ? 'section-alt' : ''}>
+      <section id={g.id} class={`product-group${gi % 2 === 1 ? ' section-alt' : ''}`}>
         <div class="container">
           <div class="section-head">
             <div class="kicker">{g.kicker}</div>
@@ -44,3 +58,66 @@ const catalogPath = localizedPath('catalog', lang);
 
   <CtaBand text={t.products.ctaBand} href={catalogPath} cta={t.common.viewCatalog} />
 </BaseLayout>
+
+<style>
+  .product-tabs-wrap {
+    position: sticky;
+    top: 72px;
+    z-index: 20;
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+  }
+  .product-tabs {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 14px 0;
+  }
+  .product-tabs::-webkit-scrollbar { display: none; }
+  .product-tab {
+    flex: none;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-family: var(--ff-display);
+    font-size: .84rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--steel);
+    border: 1px solid var(--line);
+    white-space: nowrap;
+    transition: background .18s var(--ease), color .18s var(--ease), border-color .18s var(--ease);
+  }
+  .product-tab:hover { border-color: var(--ink); color: var(--ink); }
+  .product-tab.active { background: var(--ink); border-color: var(--ink); color: #fff; }
+</style>
+
+<script>
+  function initProductTabs() {
+    const tabs = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-product-tab]'));
+    const groups = Array.from(document.querySelectorAll<HTMLElement>('.product-group'));
+    if (!tabs.length || !groups.length) return;
+
+    const setActive = (id: string) => {
+      tabs.forEach((a) => a.classList.toggle('active', a.dataset.productTab === id));
+    };
+
+    tabs.forEach((a) => {
+      a.addEventListener('click', () => setActive(a.dataset.productTab ?? ''));
+    });
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) setActive(entry.target.id);
+          });
+        },
+        { rootMargin: '-45% 0px -50% 0px' }
+      );
+      groups.forEach((g) => io.observe(g));
+    }
+  }
+  initProductTabs();
+</script>
