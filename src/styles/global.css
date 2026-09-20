@@ -295,7 +295,7 @@ body.nav-open .nav-toggle span::after { transform: translateY(-7px) rotate(-45de
 .hero .bg { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: .48; }
 .hero::after {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(96deg, rgba(11, 15, 21, .68) 4%, rgba(11, 15, 21, .46) 52%, rgba(11, 15, 21, .32) 100%);
+  background: linear-gradient(96deg, rgba(11, 15, 21, .56) 4%, rgba(11, 15, 21, .36) 52%, rgba(11, 15, 21, .22) 100%);
 }
 .hero .container { position: relative; z-index: 2; padding-top: 76px; padding-bottom: 0; }
 .hero .eyebrow { color: #fff; }

@@ -37,8 +37,41 @@ const previewItems = t.products.groups.flatMap((g) => g.items).slice(0, 8);
           </a>
         ))}
       </div>
+
+      <div class="catalog-preview-frame" data-reveal>
+        <div class="cpf-head">
+          <h3>{lang === 'tr' ? 'Kataloğu İndirmeden Önizleyin' : 'Preview the Catalogue Without Downloading'}</h3>
+          <div class="cpf-tabs" role="tablist">
+            {t.catalog.downloads.map((d, i) => (
+              <button type="button" class={`cpf-tab${i === 0 ? ' active' : ''}`} data-cpf-tab={d.href}>
+                {d.label}
+              </button>
+            ))}
+          </div>
+        </div>
+        <iframe
+          class="cpf-iframe"
+          src={`${t.catalog.downloads[0].href}#toolbar=1&view=FitH`}
+          title={lang === 'tr' ? 'Katalog önizlemesi' : 'Catalogue preview'}
+          loading="lazy"
+        ></iframe>
+      </div>
     </div>
   </section>
+
+  <script>
+    document.querySelectorAll<HTMLButtonElement>('[data-cpf-tab]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const wrap = btn.closest('.catalog-preview-frame');
+        if (!wrap) return;
+        wrap.querySelectorAll('[data-cpf-tab]').forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        const iframe = wrap.querySelector<HTMLIFrameElement>('.cpf-iframe');
+        const href = btn.dataset.cpfTab;
+        if (iframe && href) iframe.src = `${href}#toolbar=1&view=FitH`;
+      });
+    });
+  </script>
 
   <section class="section-alt">
     <div class="container">
@@ -118,4 +151,48 @@ const previewItems = t.products.groups.flatMap((g) => g.items).slice(0, 8);
     text-transform: uppercase;
   }
   .cd-action :global(svg) { width: 16px; height: 16px; }
+
+  .catalog-preview-frame {
+    max-width: 900px;
+    margin: 32px auto 0;
+    border: 1px solid var(--line);
+    background: var(--white);
+  }
+  .cpf-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--line);
+  }
+  .cpf-head h3 { font-size: 1.05rem; font-weight: 700; margin: 0; }
+  .cpf-tabs { display: flex; gap: 6px; }
+  .cpf-tab {
+    padding: 7px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--steel);
+    font-family: var(--ff-display);
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background .18s var(--ease), color .18s var(--ease), border-color .18s var(--ease);
+  }
+  .cpf-tab:hover { border-color: var(--ink); color: var(--ink); }
+  .cpf-tab.active { background: var(--brand-red); border-color: var(--brand-red); color: #fff; }
+  .cpf-iframe {
+    display: block;
+    width: 100%;
+    height: 80vh;
+    max-height: 900px;
+    border: 0;
+  }
+  @media (max-width: 620px) {
+    .cpf-iframe { height: 70vh; }
+  }
 </style>
