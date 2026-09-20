@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHead from '../PageHead.astro';
+import CtaBand from '../CtaBand.astro';
 import Icon from '../Icon.astro';
 import { useContent, localizedPath, type Lang } from '../../i18n';
 
@@ -10,18 +11,111 @@ interface Props {
 const { lang } = Astro.props;
 const t = useContent(lang);
 const contactPath = localizedPath('contact', lang);
+
+const previewItems = t.products.groups.flatMap((g) => g.items).slice(0, 8);
 ---
 
 <BaseLayout lang={lang} routeKey="catalog" title={t.meta.catalog.title} description={t.meta.catalog.description} image="/img/cemberler-kapak.webp">
   <PageHead lang={lang} crumb={t.nav.catalog} title={t.nav.catalog} lead={t.catalog.lead} bg="/img/cemberler-kapak.webp" />
+
   <section>
     <div class="container">
-      <div class="panel" data-reveal>
-        <div class="kicker">{t.catalog.kicker}</div>
-        <h2>{t.catalog.title}</h2>
+      <div class="section-head center">
+        <div class="kicker center">{t.catalog.kicker}</div>
+        <h2 class="h-title">{t.catalog.title}</h2>
         <p>{t.catalog.body}</p>
-        <a href={contactPath} class="btn btn-solid">{t.catalog.cta} <Icon name="arrow" class="arw" /></a>
+      </div>
+      <div class="catalog-downloads">
+        {t.catalog.downloads.map((d) => (
+          <a href={d.href} download class="catalog-download-card" data-reveal>
+            <span class="cd-icon"><Icon name="file" /></span>
+            <span class="cd-info">
+              <span class="cd-label">{d.label}</span>
+              <span class="cd-sub">{d.sub}</span>
+            </span>
+            <span class="cd-action"><Icon name="download" /> {t.catalog.downloadCta}</span>
+          </a>
+        ))}
       </div>
     </div>
   </section>
+
+  <section class="section-alt">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">{t.catalog.previewKicker}</div>
+        <h2 class="h-title">{t.catalog.previewTitle}</h2>
+        <p>{t.catalog.previewText}</p>
+      </div>
+      <div class="grid grid-4">
+        {previewItems.map((item) => (
+          <article class="prod-card" data-reveal>
+            <div class="thumb">
+              <img src={item.img} alt={item.name} loading="lazy" />
+            </div>
+            <div class="info">
+              <span class="prod-tag">{item.tag}</span>
+              <h3>{item.name}</h3>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand text={t.catalog.lead} href={contactPath} cta={t.catalog.cta} />
 </BaseLayout>
+
+<style>
+  .catalog-downloads {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  @media (max-width: 620px) {
+    .catalog-downloads { grid-template-columns: 1fr; }
+  }
+  .catalog-download-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 24px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    transition: border-color .2s var(--ease), box-shadow .2s var(--ease), transform .2s var(--ease);
+  }
+  .catalog-download-card:hover {
+    border-color: var(--ink);
+    box-shadow: var(--shadow-3);
+    transform: translateY(-2px);
+  }
+  .cd-icon {
+    flex: none;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--paper-2);
+    color: var(--ink);
+  }
+  .cd-icon :global(svg) { width: 24px; height: 24px; }
+  .cd-info { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .cd-label { font-weight: 700; font-size: 1.02rem; }
+  .cd-sub { font-size: .85rem; color: var(--steel); }
+  .cd-action {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--ff-display);
+    font-size: .82rem;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  .cd-action :global(svg) { width: 16px; height: 16px; }
+</style>

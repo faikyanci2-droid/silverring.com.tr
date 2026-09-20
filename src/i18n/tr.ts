@@ -579,11 +579,19 @@ const tr = {
   },
 
   catalog: {
-    lead: 'Tüm ürün gamımızın teknik detaylarını içeren güncel ürün kataloğumuz.',
+    lead: 'Çemberler, kulplar ve varil aksesuarlarımızın teknik ölçü, malzeme ve kilit mekanizması detaylarını içeren güncel ürün kataloğumuz.',
     kicker: 'PDF Katalog',
     title: 'Ürün Kataloğumuzu İndirin',
-    body: 'Güncel katalog dosyamız hazırlanma aşamasındadır. Ürünlerimizle ilgili teknik dosya ve fiyat teklifi için bizimle doğrudan iletişime geçebilirsiniz.',
-    cta: 'Katalog Talep Et',
+    body: 'Tüm ürün gamımızın teknik detaylarını PDF olarak indirebilir, teknik dosya ve fiyat teklifi için bizimle doğrudan iletişime geçebilirsiniz.',
+    downloads: [
+      { label: 'Türkçe Katalog', sub: 'PDF · 22 sayfa', href: '/katalog/silverring-urun-katalogu-tr.pdf' },
+      { label: 'English Catalogue', sub: 'PDF · 22 pages', href: '/katalog/silverring-product-catalogue-en.pdf' },
+    ],
+    downloadCta: 'İndir',
+    previewKicker: 'Kataloğun İçeriği',
+    previewTitle: 'Kataloğumuzda Neler Var',
+    previewText: 'Katalog; sac, plastik ve fiber varil çemberlerinden metal kulplara, garanti kapaklarından emniyet pimlerine kadar tüm ürün ailemizi kapsar.',
+    cta: 'Teklif Talep Et',
   },
 
   services: {

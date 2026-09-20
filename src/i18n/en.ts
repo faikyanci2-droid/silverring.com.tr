@@ -575,11 +575,19 @@ const en: SiteContent = {
   },
 
   catalog: {
-    lead: 'Our current product catalogue, containing the technical details of our entire product range.',
+    lead: 'Our current product catalogue, covering the technical dimensions, materials and locking-mechanism details of our rings, handles and drum accessories.',
     kicker: 'PDF Catalogue',
     title: 'Download Our Product Catalogue',
-    body: 'Our current catalogue file is being prepared. For technical documentation and a price quotation for our products, please contact us directly.',
-    cta: 'Request Catalogue',
+    body: 'Download the technical details of our entire product range as a PDF, or contact us directly for documentation and a price quotation.',
+    downloads: [
+      { label: 'English Catalogue', sub: 'PDF · 22 pages', href: '/katalog/silverring-product-catalogue-en.pdf' },
+      { label: 'Türkçe Katalog', sub: 'PDF · 22 sayfa', href: '/katalog/silverring-urun-katalogu-tr.pdf' },
+    ],
+    downloadCta: 'Download',
+    previewKicker: "What's Inside",
+    previewTitle: 'Inside the Catalogue',
+    previewText: 'The catalogue covers our full product family — from steel, plastic and fibre drum rings to metal handles, tamper-evident caps and safety pins.',
+    cta: 'Request a Quote',
   },
 
   services: {
