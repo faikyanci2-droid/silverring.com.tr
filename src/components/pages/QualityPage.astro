@@ -169,20 +169,20 @@ const certSize = (img: string) => (img.includes('irec') ? { w: 800, h: 1180 } : 
 
   .cert-stats-band {
     margin-top: 40px;
-    background: var(--ink);
-    color: #fff;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    color: var(--ink);
     padding: 44px 40px;
     text-align: center;
   }
-  .cert-stats-band .kicker { justify-content: center; color: var(--steel-2); }
-  .cert-stats-band .kicker::before { background: var(--steel-2); }
+  .cert-stats-band .kicker { justify-content: center; }
   .cert-stats-band h3 { font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-weight: 700; margin-bottom: 12px; }
-  .cert-stats-band p { color: #c4cbd4; max-width: 56ch; margin: 0 auto; }
+  .cert-stats-band p { color: var(--steel); max-width: 56ch; margin: 0 auto; }
   .cert-stats {
     display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
-    margin-top: 30px; padding-top: 28px; border-top: 1px solid rgba(255, 255, 255, .16);
+    margin-top: 30px; padding-top: 28px; border-top: 1px solid var(--line);
   }
   .cert-stat { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-  .cert-stat .n { font-family: var(--ff-display); font-weight: 700; font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--steel-2); }
-  .cert-stat .l { font-size: .84rem; color: #aeb7c2; text-transform: uppercase; letter-spacing: .08em; }
+  .cert-stat .n { font-family: var(--ff-display); font-weight: 700; font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--brand-red); }
+  .cert-stat .l { font-size: .84rem; color: var(--steel); text-transform: uppercase; letter-spacing: .08em; }
 </style>
