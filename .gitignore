@@ -18,3 +18,5 @@ pnpm-debug.log*
 .vscode/
 !.vscode/extensions.json
 .idea/
+# Playwright CLI output (may contain credentials)
+.playwright-cli/
