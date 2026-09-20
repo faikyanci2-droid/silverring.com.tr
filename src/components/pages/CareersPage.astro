@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../PageHead.astro';
+import Icon from '../Icon.astro';
+import { useContent, type Lang } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useContent(lang);
+const c = t.careers;
+const icons = ['globe', 'shield', 'growth'] as const;
+---
+
+<BaseLayout lang={lang} routeKey="careers" title={t.meta.careers.title} description={t.meta.careers.description} image="/img/hero-factory.webp">
+  <PageHead lang={lang} crumb={t.nav.careers} title={c.headTitle} lead={c.lead} bg="/img/hero-factory.webp" />
+
+  <section>
+    <div class="container">
+      <div class="split">
+        <div data-reveal>
+          <div class="kicker">{c.kicker}</div>
+          <h2 class="h-title">{c.title}</h2>
+          <p>{c.body}</p>
+          <a href={`mailto:${t.company.email}`} class="btn btn-solid" style="margin-top:8px;">
+            {c.cta} <Icon name="arrow" class="arw" />
+          </a>
+        </div>
+        <div class="media" data-reveal>
+          <img src="/img/hero-factory.webp" alt={c.headTitle} width="1400" height="728" decoding="async" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">{c.whyKicker}</div>
+        <h2 class="h-title">{c.whyTitle}</h2>
+      </div>
+      <div class="grid grid-3">
+        {
+          c.cards.map((card, i) => (
+            <div class="feature" data-reveal>
+              <div class="ic">
+                <Icon name={icons[i] ?? 'globe'} />
+              </div>
+              <h3>{card.title}</h3>
+              <p>{card.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

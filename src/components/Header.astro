@@ -1,0 +1,108 @@
+---
+import { useContent, localizedPath, alternatePath, type Lang, type RouteKey } from '../i18n';
+import Icon from './Icon.astro';
+import Logo from './Logo.astro';
+
+interface Props {
+  lang: Lang;
+  routeKey: RouteKey;
+}
+const { lang, routeKey } = Astro.props;
+const t = useContent(lang);
+
+type SubLink = { label: string; hash: string };
+type SubGroup = { title: string; hash: string; items: SubLink[] };
+type Item = { key: RouteKey; label: string; sub?: SubLink[]; megaSub?: SubGroup[] };
+
+const items: Item[] = [
+  { key: 'home', label: t.nav.home },
+  { key: 'corporate', label: t.nav.corporate, sub: t.nav.sub.corporate },
+  { key: 'products', label: t.nav.products, megaSub: t.nav.sub.products },
+  { key: 'catalog', label: t.nav.catalog },
+  { key: 'services', label: t.nav.services, sub: t.nav.sub.services },
+  { key: 'quality', label: t.nav.quality, sub: t.nav.sub.quality },
+  { key: 'news', label: t.nav.news },
+  { key: 'responsibility', label: t.nav.responsibility, sub: t.nav.sub.responsibility },
+  { key: 'careers', label: t.nav.careers },
+  { key: 'contact', label: t.nav.contact },
+];
+
+const homePath = localizedPath('home', lang);
+---
+
+<div class="utility-bar">
+  <div class="inner">
+    <div class="u-left">
+      <a class="u-item u-hide-sm" href={`tel:${t.company.phoneHref}`}>
+        <Icon name="phone" /> {t.company.phone}
+      </a>
+      <a class="u-item" href={`mailto:${t.company.email}`}>
+        <Icon name="mail" /> {t.company.email}
+      </a>
+      <span class="u-item u-hide-sm">
+        <Icon name="pin" /> {t.common.location}
+      </span>
+    </div>
+    <div class="lang-switch" role="group" aria-label={t.common.langLabel}>
+      <a href={alternatePath(routeKey, 'tr')} hreflang="tr" aria-current={lang === 'tr' ? 'true' : 'false'}>TR</a>
+      <a href={alternatePath(routeKey, 'en')} hreflang="en" aria-current={lang === 'en' ? 'true' : 'false'}>EN</a>
+    </div>
+  </div>
+</div>
+
+<header class="site-header" id="siteHeader">
+  <div class="inner">
+    <a href={homePath} class="brand" aria-label={t.company.name}>
+      <Logo />
+    </a>
+
+    <nav class="main-nav" id="mainNav" aria-label={lang === 'tr' ? 'Ana menü' : 'Main menu'}>
+      <ul>
+        {
+          items.map((item) => {
+            const href = localizedPath(item.key, lang);
+            const isActive = item.key === routeKey;
+            return (
+              <li class={`${isActive ? 'active' : ''}${(item.sub || item.megaSub) ? ' has-sub' : ''}`}>
+                <a href={href} aria-current={isActive ? 'page' : undefined}>
+                  {item.label}
+                  {(item.sub || item.megaSub) && <span class="caret" aria-hidden="true" />}
+                </a>
+                {item.sub && (
+                  <ul class="submenu">
+                    {item.sub.map((s) => (
+                      <li>
+                        <a href={`${href}#${s.hash}`}>{s.label}</a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {item.megaSub && (
+                  <div class="mega-submenu">
+                    {item.megaSub.map((group) => (
+                      <div class="mega-col">
+                        <a class="mega-col-title" href={`${href}#${group.hash}`}>{group.title}</a>
+                        <ul>
+                          {group.items.map((s) => (
+                            <li>
+                              <a href={`${href}#${s.hash}`}>{s.label}</a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+
+    <button class="nav-toggle" id="navToggle" aria-label={t.common.openMenu} aria-expanded="false" aria-controls="mainNav">
+      <span></span>
+    </button>
+  </div>
+</header>
+<div class="nav-scrim" id="navScrim" hidden></div>

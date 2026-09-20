@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../PageHead.astro';
+import CtaBand from '../CtaBand.astro';
+import { useContent, localizedPath, type Lang } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useContent(lang);
+const catalogPath = localizedPath('catalog', lang);
+---
+
+<BaseLayout lang={lang} routeKey="products" title={t.meta.products.title} description={t.meta.products.description} image="/img/banner-aksesuar.webp">
+  <PageHead lang={lang} crumb={t.nav.products} title={t.nav.products} lead={t.products.lead} bg="/img/banner-aksesuar.webp" />
+
+  {
+    t.products.groups.map((g, gi) => (
+      <section id={g.id} class={gi % 2 === 1 ? 'section-alt' : ''}>
+        <div class="container">
+          <div class="section-head">
+            <div class="kicker">{g.kicker}</div>
+            <h2 class="h-title">{g.title}</h2>
+            <p>{g.text}</p>
+          </div>
+          <div class="grid grid-4">
+            {g.items.map((item) => (
+              <article class="prod-card" data-reveal>
+                <div class="thumb">
+                  <img src={item.img} alt={item.name} loading="lazy" />
+                </div>
+                <div class="info">
+                  <span class="prod-tag">{item.tag}</span>
+                  <h3>{item.name}</h3>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))
+  }
+
+  <CtaBand text={t.products.ctaBand} href={catalogPath} cta={t.common.viewCatalog} />
+</BaseLayout>

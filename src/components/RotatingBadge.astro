@@ -1,0 +1,75 @@
+---
+// Hero üzerine bindirilen dönen rozet (kurumsal referans temalardaki "since 1989 /
+// award winning" mührü fikrinin markaya uyarlanmış hâli). Metin dairesel bir yol
+// üzerinde döner, ortada sabit bir ikon durur.
+import Icon from './Icon.astro';
+import type { IconName } from './Icon.astro';
+
+interface Props {
+  id: string;
+  text: string;
+  icon?: IconName;
+  class?: string;
+}
+const { id, text, icon = 'award', class: className } = Astro.props;
+const pathId = `badge-path-${id}`;
+---
+
+<div class:list={['rotating-badge', className]}>
+  <svg viewBox="0 0 200 200" class="badge-ring" aria-hidden="true">
+    <defs>
+      <path id={pathId} d="M100,100 m-84,0 a84,84 0 1,1 168,0 a84,84 0 1,1 -168,0" />
+    </defs>
+    <text>
+      <textPath href={`#${pathId}`}>{text}</textPath>
+    </text>
+  </svg>
+  <span class="badge-center"><Icon name={icon} /></span>
+</div>
+
+<style>
+  .rotating-badge {
+    position: relative;
+    width: 132px;
+    height: 132px;
+    flex: none;
+  }
+  .badge-ring {
+    width: 100%;
+    height: 100%;
+    animation: badge-spin 22s linear infinite;
+  }
+  .badge-ring text {
+    font-family: var(--ff-display);
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+    fill: var(--white);
+  }
+  .badge-center {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: var(--white);
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .badge-center :global(svg) { width: 26px; height: 26px; }
+
+  @keyframes badge-spin {
+    to { transform: rotate(360deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .badge-ring { animation: none; }
+  }
+
+  /* Koyu olmayan zeminlerde kullanım için */
+  .rotating-badge.on-light .badge-ring text { fill: var(--ink); }
+  .rotating-badge.on-light .badge-center { background: var(--ink); color: var(--white); }
+</style>

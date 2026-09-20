@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../PageHead.astro';
+import DocLayout from '../DocLayout.astro';
+import DocBlock from '../DocBlock.astro';
+import Icon from '../Icon.astro';
+import { useContent, localizedPath, type Lang } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useContent(lang);
+const about = t.corporate.about;
+const mv = t.corporate.missionVision;
+const nav = t.corporate.blocks.map((b) => ({ label: b.title, hash: b.id }));
+const contactPath = localizedPath('contact', lang);
+---
+
+<BaseLayout lang={lang} routeKey="corporate" title={t.meta.corporate.title} description={t.meta.corporate.description} image="/img/hero-kapak.webp">
+  <PageHead lang={lang} crumb={t.nav.corporate} title={t.nav.corporate} lead={t.corporate.lead} bg="/img/hero-kapak.webp" />
+
+  <section id="hakkimizda">
+    <div class="container">
+      <div class="split">
+        <div class="framed" data-reveal>
+          <img src={about.img} alt={about.imgAlt} width="1400" height="728" loading="lazy" decoding="async" />
+        </div>
+        <div data-reveal>
+          <div class="kicker">{about.kicker}</div>
+          <h2 class="h-title">{about.title}</h2>
+          {about.paras.map((p) => <p>{p}</p>)}
+          <a href={contactPath} class="btn btn-solid" style="margin-top:10px;">
+            {t.common.contactUs} <Icon name="arrow" class="arw" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt section-tight">
+    <div class="container">
+      <div class="grid grid-2">
+        <div class="feature">
+          <h3>{mv.mission.title}</h3>
+          <p>{mv.mission.text}</p>
+        </div>
+        <div class="feature">
+          <h3>{mv.vision.title}</h3>
+          <p>{mv.vision.text}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <DocLayout nav={nav}>
+    {
+      t.corporate.blocks.map((b) => (
+        <DocBlock
+          id={b.id}
+          kicker={b.kicker}
+          title={b.title}
+          paras={b.paras}
+          list={b.list}
+          sections={(b as any).sections}
+          outro={(b as any).outro}
+          signOff={(b as any).signOff}
+          img={b.img}
+          imgAlt={b.imgAlt}
+        />
+      ))
+    }
+  </DocLayout>
+</BaseLayout>

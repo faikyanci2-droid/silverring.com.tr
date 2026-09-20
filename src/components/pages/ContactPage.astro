@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../PageHead.astro';
+import Icon from '../Icon.astro';
+import { useContent, type Lang } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useContent(lang);
+const co = t.company;
+const c = t.contact;
+const f = c.form;
+
+const addressQuery = 'Gebze Güzeller OSB İnönü Mah. Aşık Veysel Sok. No:2/1 Kocaeli';
+const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(addressQuery)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
+const mapLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addressQuery)}`;
+
+const branchQuery = co.branchAddress.join(' ');
+const branchMapLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(branchQuery)}`;
+---
+
+<BaseLayout lang={lang} routeKey="contact" title={t.meta.contact.title} description={t.meta.contact.description} image="/img/hero-kapak.webp">
+  <PageHead lang={lang} crumb={t.nav.contact} title={t.nav.contact} lead={c.lead} bg="/img/hero-kapak.webp" />
+
+  <section style="padding-bottom:0;">
+    <div class="container">
+      <div class="office-grid">
+        <div class="office-card">
+          <span class="office-ic"><Icon name="factory" /></span>
+          <h3>{co.hqTitle}</h3>
+          <p>{co.hqAddress.join(', ')}</p>
+          <a href={mapLink} target="_blank" rel="noopener" class="office-link">
+            {c.openInMaps} <Icon name="arrow" class="arw" />
+          </a>
+        </div>
+        <div class="office-card">
+          <span class="office-ic"><Icon name="building" /></span>
+          <h3>{co.branchTitle}</h3>
+          <p>{co.branchAddress.join(', ')}</p>
+          <a href={branchMapLink} target="_blank" rel="noopener" class="office-link">
+            {c.openInMaps} <Icon name="arrow" class="arw" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="contact-split">
+        <div class="contact-info">
+          <div class="kicker">{c.infoKicker}</div>
+          <h2 class="h-title">{c.infoTitle}</h2>
+          <p class="lead-p">{c.infoLead}</p>
+
+          <div class="info-rows">
+            <div class="info-row">
+              <span class="ic"><Icon name="phone" /></span>
+              <div>
+                <div class="k">{c.phoneLabel}</div>
+                <div class="v"><a href={`tel:${co.phoneHref}`}>{co.phone}</a></div>
+              </div>
+            </div>
+            <div class="info-row">
+              <span class="ic"><Icon name="mail" /></span>
+              <div>
+                <div class="k">{c.emailLabel}</div>
+                <div class="v"><a href={`mailto:${co.email}`}>{co.email}</a></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="map-frame">
+            <a class="map-open" href={mapLink} target="_blank" rel="noopener">
+              {c.openInMaps} <Icon name="arrow" class="arw" />
+            </a>
+            <iframe class="map-embed" title={c.mapTitle} src={mapSrc} loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+
+        <div class="contact-form-col">
+          <div class="kicker">{c.formKicker}</div>
+          <h2 class="h-title">{c.formHeading}</h2>
+          <p class="lead-p">{c.formLead}</p>
+
+          <form class="form-grid" id="contactForm" novalidate>
+            <div class="field">
+              <label for="cf-name">{f.name}</label>
+              <div class="field-icon">
+                <Icon name="user" />
+                <input id="cf-name" name="name" type="text" autocomplete="name" required />
+              </div>
+            </div>
+            <div class="field">
+              <label for="cf-company">{f.company}</label>
+              <div class="field-icon">
+                <Icon name="building" />
+                <input id="cf-company" name="company" type="text" autocomplete="organization" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="cf-email">{f.email}</label>
+              <div class="field-icon">
+                <Icon name="mail" />
+                <input id="cf-email" name="email" type="email" autocomplete="email" required />
+              </div>
+            </div>
+            <div class="field">
+              <label for="cf-phone">{f.phone}</label>
+              <div class="field-icon">
+                <Icon name="phone" />
+                <input id="cf-phone" name="phone" type="tel" autocomplete="tel" />
+              </div>
+            </div>
+            <div class="field full">
+              <label for="cf-subject">{f.subject}</label>
+              <select id="cf-subject" name="subject">
+                <option value="">{f.subjectPlaceholder}</option>
+                {f.subjectOptions.map((o) => <option value={o}>{o}</option>)}
+              </select>
+            </div>
+            <div class="field full">
+              <label for="cf-message">{f.message}</label>
+              <textarea id="cf-message" name="message" required></textarea>
+            </div>
+            <div class="field full consent-row">
+              <input id="cf-consent" name="consent" type="checkbox" required />
+              <label for="cf-consent">{f.consent}</label>
+            </div>
+            <div class="full">
+              <button type="submit" class="btn btn-solid">{f.submit} <Icon name="arrow" class="arw" /></button>
+              <p class="form-note">{f.note}</p>
+              <p id="cf-status" role="status" aria-live="polite" class="form-status"></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script is:inline define:vars={{ successMsg: f.success }}>
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('cf-status');
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    if (status) status.textContent = successMsg;
+    form.reset();
+  });
+</script>

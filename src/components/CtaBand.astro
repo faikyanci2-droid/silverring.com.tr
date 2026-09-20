@@ -1,0 +1,17 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  text: string;
+  href: string;
+  cta: string;
+}
+const { text, href, cta } = Astro.props;
+---
+
+<section class="cta-band">
+  <div class="container row">
+    <h2>{text}</h2>
+    <a href={href} class="btn">{cta} <Icon name="arrow" class="arw" /></a>
+  </div>
+</section>

@@ -1,0 +1,17 @@
+---
+interface Props {
+  nav: { label: string; hash: string }[];
+}
+const { nav } = Astro.props;
+---
+
+<section>
+  <div class="container doc-layout">
+    <nav class="doc-nav" aria-label="Bölümler">
+      {nav.map((n) => <a href={`#${n.hash}`}>{n.label}</a>)}
+    </nav>
+    <div>
+      <slot />
+    </div>
+  </div>
+</section>

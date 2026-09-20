@@ -1,0 +1,98 @@
+---
+import Icon from './Icon.astro';
+
+interface Section {
+  heading?: string;
+  paras?: string[];
+  list?: string[];
+}
+
+interface Props {
+  id: string;
+  kicker: string;
+  title: string;
+  paras?: string[];
+  list?: string[];
+  sections?: Section[];
+  outro?: string[];
+  signOff?: string;
+  img?: string;
+  imgAlt?: string;
+}
+const {
+  id,
+  kicker,
+  title,
+  paras = [],
+  list = [],
+  sections = [],
+  outro = [],
+  signOff = '',
+  img = '',
+  imgAlt = '',
+} = Astro.props;
+
+// CLS'i önlemek için bilinen görsellerin gerçek piksel boyutları (genişlik x yükseklik).
+const IMG_DIMS: Record<string, [number, number]> = {
+  '/img/iso9001.webp': [566, 800],
+  '/img/iso14001.webp': [566, 800],
+  '/img/iso45001.webp': [566, 800],
+  '/img/iso10002.webp': [566, 800],
+  '/img/consulting.webp': [1199, 800],
+  '/img/product-design.webp': [800, 800],
+  '/img/product-development.webp': [1198, 800],
+  '/img/test.webp': [1280, 464],
+  '/img/kalite-2.webp': [600, 400],
+  '/img/sosyal-sorumluluk.webp': [1210, 778],
+};
+const [imgW, imgH] = IMG_DIMS[img] ?? [];
+---
+
+<article class={`doc-block${img ? ' doc-block-split' : ''}`} id={id} data-reveal>
+  {
+    img && (
+      <div class="doc-block-media">
+        <img src={img} alt={imgAlt} width={imgW} height={imgH} loading="lazy" decoding="async" />
+      </div>
+    )
+  }
+  <div class="doc-block-text">
+    <div class="kicker">{kicker}</div>
+    <h2>{title}</h2>
+    {paras.map((p) => <p>{p}</p>)}
+    {
+      list.length > 0 && (
+        <ul class="check-list">
+          {list.map((li) => (
+            <li>
+              <span class="dot" aria-hidden="true"><Icon name="check" /></span>
+              <p>{li}</p>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+    {
+      sections.map((s) => (
+        <>
+          {s.heading && <h3 class="doc-block-subheading">{s.heading}</h3>}
+          {(s.paras ?? []).map((p) => <p>{p}</p>)}
+          {
+            s.list && s.list.length > 0 && (
+              <ul class="check-list">
+                {s.list.map((li) => (
+                  <li>
+                    <span class="dot" aria-hidden="true"><Icon name="check" /></span>
+                    <p>{li}</p>
+                  </li>
+                ))}
+              </ul>
+            )
+          }
+        </>
+      ))
+    }
+    {outro.map((p) => <p style="margin-top:20px;">{p}</p>)}
+    {signOff && <p class="doc-block-signoff">{signOff}</p>}
+  </div>
+</article>

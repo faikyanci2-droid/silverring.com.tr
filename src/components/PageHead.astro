@@ -1,0 +1,24 @@
+---
+import { useContent, localizedPath, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  lead?: string;
+  crumb: string;
+  bg: string;
+}
+const { lang, title, lead, crumb, bg } = Astro.props;
+const t = useContent(lang);
+---
+
+<section class="page-head">
+  <div class="bg" style={`background-image:url('${bg}')`}></div>
+  <div class="container">
+    <p class="crumb">
+      <a href={localizedPath('home', lang)}>{t.common.home}</a><span>/</span>{crumb}
+    </p>
+    <h1>{title}</h1>
+    {lead && <p>{lead}</p>}
+  </div>
+</section>

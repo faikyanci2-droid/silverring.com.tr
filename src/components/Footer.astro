@@ -1,0 +1,89 @@
+---
+import { useContent, localizedPath, type Lang } from '../i18n';
+import Icon from './Icon.astro';
+import Logo from './Logo.astro';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useContent(lang);
+const year = new Date().getFullYear();
+
+const withHash = (key: Parameters<typeof localizedPath>[0], hash: string) =>
+  hash ? `${localizedPath(key, lang)}#${hash}` : localizedPath(key, lang);
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href={localizedPath('home', lang)} class="brand" aria-label={t.company.name}>
+          <Logo />
+        </a>
+        <p>{t.company.footerBlurb}</p>
+        <div class="foot-social">
+          <a href="https://www.linkedin.com/in/silver-ring-36817a28a" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <Icon name="linkedin" />
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4>{t.footer.colCorporate}</h4>
+        <ul>
+          {t.footer.linksCorporate.map((l) => (
+            <li><a href={withHash(l.key as any, l.hash)}>{l.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h4>{t.footer.colProducts}</h4>
+        <ul>
+          {t.footer.linksProducts.map((l) => (
+            <li><a href={withHash(l.key as any, l.hash)}>{l.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h4>{t.footer.colContact}</h4>
+        <div class="foot-contact-rows">
+          <div class="foot-contact-row">
+            <span class="ic"><Icon name="pin" /></span>
+            <div>
+              <div class="k">{t.company.hqTitle}</div>
+              <div class="v">{t.company.hqAddress.join(', ')}</div>
+            </div>
+          </div>
+          <div class="foot-contact-row">
+            <span class="ic"><Icon name="phone" /></span>
+            <div>
+              <div class="k">{t.contact.phoneLabel}</div>
+              <div class="v"><a href={`tel:${t.company.phoneHref}`}>{t.company.phone}</a></div>
+            </div>
+          </div>
+          <div class="foot-contact-row">
+            <span class="ic"><Icon name="mail" /></span>
+            <div>
+              <div class="k">{t.contact.emailLabel}</div>
+              <div class="v"><a href={`mailto:${t.company.email}`}>{t.company.email}</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot-legal">
+      <a href={localizedPath('privacy', lang)}>{t.legal.privacy.title}</a>
+      <a href={localizedPath('kvkk', lang)}>{t.legal.kvkk.title}</a>
+      <a href={localizedPath('cookies', lang)}>{t.legal.cookies.title}</a>
+    </div>
+
+    <div class="foot-bottom">
+      <span>&copy; {year} {t.company.legalName} {t.common.allRightsReserved}</span>
+      <span>{t.common.location}</span>
+    </div>
+  </div>
+</footer>

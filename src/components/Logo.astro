@@ -1,0 +1,21 @@
+---
+/**
+ * SilverRing kurumsal logo — gerçek marka görseli (silverring.com.tr'den).
+ * Çelik gri halka + turuncu-kırmızı üçgen + "SilverRing" yazısı.
+ * İki raster varyant: koyu yazı (açık zeminler) ve beyaz yazı (koyu zeminler).
+ *
+ * Kullanım:
+ *   <Logo />                               -> koyu yazılı logo (açık zemin, header)
+ *   <a class="brand on-dark"><Logo /></a>  -> beyaz yazılı logo (koyu zemin, footer)
+ */
+interface Props {
+  class?: string;
+  title?: string;
+}
+const { class: className = '', title = 'SilverRing' } = Astro.props;
+---
+
+<span class={`brand-logo ${className}`}>
+  <img class="brand-lockup brand-lockup-dark" src="/img/logo-real.png" alt={title} width="400" height="98" decoding="async" />
+  <img class="brand-lockup brand-lockup-light" src="/img/logo-real-white.png" alt={title} width="400" height="98" decoding="async" />
+</span>

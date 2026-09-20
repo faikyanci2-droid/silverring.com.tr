@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../PageHead.astro';
+import Icon from '../Icon.astro';
+import { useContent, localizedPath, type Lang } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useContent(lang);
+const contactPath = localizedPath('contact', lang);
+---
+
+<BaseLayout lang={lang} routeKey="catalog" title={t.meta.catalog.title} description={t.meta.catalog.description} image="/img/cemberler-kapak.webp">
+  <PageHead lang={lang} crumb={t.nav.catalog} title={t.nav.catalog} lead={t.catalog.lead} bg="/img/cemberler-kapak.webp" />
+  <section>
+    <div class="container">
+      <div class="panel" data-reveal>
+        <div class="kicker">{t.catalog.kicker}</div>
+        <h2>{t.catalog.title}</h2>
+        <p>{t.catalog.body}</p>
+        <a href={contactPath} class="btn btn-solid">{t.catalog.cta} <Icon name="arrow" class="arw" /></a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../PageHead.astro';
+import DocLayout from '../DocLayout.astro';
+import DocBlock from '../DocBlock.astro';
+import { useContent, type Lang } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useContent(lang);
+const nav = t.services.blocks.map((b) => ({ label: b.title, hash: b.id }));
+---
+
+<BaseLayout lang={lang} routeKey="services" title={t.meta.services.title} description={t.meta.services.description} image="/img/product-development.webp">
+  <PageHead lang={lang} crumb={t.nav.services} title={t.nav.services} lead={t.services.lead} bg="/img/product-development.webp" />
+  <DocLayout nav={nav}>
+    {
+      t.services.blocks.map((b) => (
+        <DocBlock id={b.id} kicker={b.kicker} title={b.title} paras={b.paras} img={b.img} imgAlt={b.imgAlt} />
+      ))
+    }
+  </DocLayout>
+</BaseLayout>

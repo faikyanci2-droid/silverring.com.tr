@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../PageHead.astro';
+import DocLayout from '../DocLayout.astro';
+import DocBlock from '../DocBlock.astro';
+import { useContent, type Lang } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useContent(lang);
+const nav = t.responsibility.blocks.map((b) => ({ label: b.title, hash: b.id }));
+---
+
+<BaseLayout
+  lang={lang}
+  routeKey="responsibility"
+  title={t.meta.responsibility.title}
+  description={t.meta.responsibility.description}
+  image="/img/sokak-hayvanlari-1.webp"
+>
+  <PageHead
+    lang={lang}
+    crumb={t.nav.responsibility}
+    title={t.nav.responsibility}
+    lead={t.responsibility.lead}
+    bg="/img/sokak-hayvanlari-1.webp"
+  />
+  <DocLayout nav={nav}>
+    {
+      t.responsibility.blocks.map((b) => (
+        <DocBlock
+          id={b.id}
+          kicker={b.kicker}
+          title={b.title}
+          list={b.list}
+          outro={b.outro}
+          img={b.img}
+          imgAlt={b.imgAlt}
+        />
+      ))
+    }
+  </DocLayout>
+</BaseLayout>

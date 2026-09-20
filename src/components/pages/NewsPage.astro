@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../PageHead.astro';
+import Icon from '../Icon.astro';
+import { useContent, localizedPath, type Lang } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useContent(lang);
+const contactPath = localizedPath('contact', lang);
+const posts = t.news.posts ?? [];
+---
+
+<BaseLayout lang={lang} routeKey="news" title={t.meta.news.title} description={t.meta.news.description} image="/img/haber-uretim-hatti.webp">
+  <PageHead lang={lang} crumb={t.nav.news} title={t.nav.news} lead={t.news.lead} bg="/img/hero-kapak.webp" />
+
+  {
+    posts.length > 0 ? (
+      <section>
+        <div class="container" style="max-width:820px;">
+          {posts.map((post) => (
+            <article class="doc-block news-post" data-reveal>
+              <div class="news-post-media">
+                <img src={post.img} alt={post.title} width="600" height="400" loading="lazy" decoding="async" />
+                <span class="news-post-tag">{lang === 'tr' ? 'Duyuru' : 'Announcement'}</span>
+              </div>
+              <div class="kicker">{post.date}</div>
+              <h2>{post.title}</h2>
+              {post.paras.map((p) => <p>{p}</p>)}
+            </article>
+          ))}
+        </div>
+      </section>
+    ) : (
+      <section>
+        <div class="container">
+          <div class="panel" data-reveal>
+            <div class="kicker">{t.news.kicker}</div>
+            <h2>{t.news.title}</h2>
+            <p>{t.news.body}</p>
+            <a href={contactPath} class="btn btn-solid">{t.news.cta} <Icon name="arrow" class="arw" /></a>
+          </div>
+        </div>
+      </section>
+    )
+  }
+</BaseLayout>

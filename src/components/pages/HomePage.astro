@@ -1,0 +1,386 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../Icon.astro';
+import type { IconName } from '../Icon.astro';
+import HeroSlider from '../HeroSlider.astro';
+import type { Slide } from '../HeroSlider.astro';
+import RotatingBadge from '../RotatingBadge.astro';
+import { useContent, localizedPath, type Lang } from '../../i18n';
+import { safeJsonLd } from '../../utils/safeJsonLd';
+
+const heroSlides: Slide[] = [
+  { type: 'video', src: '/video/hero-1.mp4' },
+  { type: 'image', src: '/img/banner-kova-slider.webp' },
+  { type: 'video', src: '/video/hero-2.mp4' },
+  { type: 'image', src: '/img/silverring-fiber-slider.webp' },
+  { type: 'video', src: '/video/hero-3.mp4' },
+  { type: 'image', src: '/img/silverring-pvc-slider.webp' },
+  { type: 'video', src: '/video/hero-4.mp4' },
+  { type: 'image', src: '/img/silverring-varil-slider.webp' },
+];
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useContent(lang);
+const h = t.home;
+const q = t.quality;
+
+// CLS'i önlemek için gerçek görsel oranı: sertifikaların çoğu A4 (566x800), I-REC belgeleri farklı orana sahip (800x1180).
+const certSize = (img: string) => (img.includes('irec') ? { w: 800, h: 1180 } : { w: 566, h: 800 });
+
+const productsPath = localizedPath('products', lang);
+const contactPath = localizedPath('contact', lang);
+const catalogPath = localizedPath('catalog', lang);
+const qualityPath = localizedPath('quality', lang);
+const corporatePath = localizedPath('corporate', lang);
+const servicesPath = localizedPath('services', lang);
+
+const overview = [
+  { title: t.nav.products, text: t.products.lead, img: '/img/cemberler-kapak.webp', href: productsPath },
+  { title: t.nav.services, text: t.services.lead, img: '/img/product-development.webp', href: servicesPath },
+  { title: t.nav.quality, text: t.quality.lead, img: '/img/kalite-2.webp', href: qualityPath },
+];
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: h.faq.items.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<BaseLayout lang={lang} routeKey="home" title={t.meta.home.title} description={t.meta.home.description}>
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <HeroSlider slides={heroSlides} />
+    <div class="hero-badge">
+      <RotatingBadge
+        id="home-hero"
+        icon="award"
+        text={lang === 'tr' ? '20+ YIL SEKTÖR DENEYİMİ • ISO SERTİFİKALI ÜRETİM • ' : '20+ YEARS OF EXPERIENCE • ISO CERTIFIED PRODUCTION • '}
+      />
+    </div>
+    <div class="container">
+      <p class="eyebrow">{h.hero.eyebrow}</p>
+      <h1>{h.hero.title}</h1>
+      <p class="lead">{h.hero.lead}</p>
+      <div class="cta-row">
+        <a href={productsPath} class="btn btn-solid">{h.hero.ctaPrimary} <Icon name="arrow" class="arw" /></a>
+        <a href={contactPath} class="btn btn-ghost-light">{h.hero.ctaSecondary}</a>
+      </div>
+      <div class="hero-stats">
+        {
+          h.hero.stats.map((s) => (
+            <div class="s">
+              <div class="n">{s.num}</div>
+              <div class="l">{s.label}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HAKKIMIZDA ============ -->
+  <section>
+    <div class="container">
+      <div class="split">
+        <div class="framed" data-reveal>
+          <img src="/img/anasayfa-genel.webp" alt={t.company.legalName} width="988" height="623" loading="lazy" decoding="async" />
+        </div>
+        <div data-reveal>
+          <div class="kicker">{h.about.kicker}</div>
+          <h2 class="h-title">{h.about.title}</h2>
+          <p>{h.about.p1}</p>
+          <p>{h.about.p2}</p>
+          <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:18px;">
+            <a href={`${corporatePath}#hakkimizda`} class="btn">{h.about.cta} <Icon name="arrow" class="arw" /></a>
+            <div class="mega-stat">
+              <span class="n">30+</span>
+              <span class="l">{lang === 'tr' ? 'ülkeye ihracat' : 'countries served'}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ÖNE ÇIKANLAR ============ -->
+  <section class="section-tight overview-section">
+    <div class="container">
+      <div class="overview-grid">
+        {
+          overview.map((o, i) => (
+            <a href={o.href} class="feature-tile" data-reveal>
+              <img src={o.img} alt={o.title} width="500" height="625" loading="lazy" decoding="async" />
+              <span class="feature-tile-no">{String(i + 1).padStart(2, '0')}</span>
+              <div class="feature-tile-body">
+                <h3>{o.title}</h3>
+                <p>{o.text}</p>
+                <span class="feature-tile-link">
+                  {t.common.explore} <Icon name="arrow" class="arw" />
+                </span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRUST BAR ============ -->
+  <div class="trust-bar">
+    <div class="inner">
+      <span class="lbl">{h.trust.label}</span>
+      {h.trust.items.map((it) => (
+        <span class="badge">{it.code} <small>{it.name}</small></span>
+      ))}
+    </div>
+  </div>
+
+  <!-- ============ NEDEN SILVERRING ============ -->
+  <section class="section-alt">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">{h.why.kicker}</div>
+        <h2 class="h-title">{h.why.title}</h2>
+      </div>
+      <div class="num-grid">
+        {
+          h.why.cards.map((c) => (
+            <article class="num-card" data-reveal>
+              <span class="no">{c.no}</span>
+              <span class="ic"><Icon name={c.icon as IconName} /></span>
+              <h3>{c.title}</h3>
+              <p>{c.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ÜRÜN AİLESİ ============ -->
+  <section class="section-alt">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">{h.productsTeaser.kicker}</div>
+        <h2 class="h-title">{h.productsTeaser.title}</h2>
+      </div>
+      <div class="grid grid-4">
+        {
+          h.productsTeaser.cards.map((c) => (
+            <article class="card" data-reveal>
+              <div class="card-media">
+                <img src={c.img} alt={c.title} width="300" height="300" loading="lazy" decoding="async" />
+              </div>
+              <div class="card-body">
+                <h3>{c.title}</h3>
+                <p>{c.text}</p>
+                <a class="card-link" href={`${productsPath}#${c.hash}`}>
+                  {t.common.explore} <Icon name="arrow" class="arw" />
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SAYAÇLAR ============ -->
+  <section class="section-ink section-tight">
+    <div class="container">
+      <div class="counters">
+        {
+          h.counters.items.map((c) => (
+            <div class="counter" data-reveal>
+              <span class="ic"><Icon name={c.icon as IconName} /></span>
+              <div class="n" data-count={c.n}>{c.n}</div>
+              <div class="l">{c.l}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ KALİTE ============ -->
+  <section>
+    <div class="container">
+      <div class="split reverse">
+        <div class="media framed" data-reveal>
+          <img src="/img/kalite-1.webp" alt={h.quality.kicker} width="600" height="400" loading="lazy" decoding="async" />
+        </div>
+        <div data-reveal>
+          <div class="kicker">{h.quality.kicker}</div>
+          <h2 class="h-title">{h.quality.title}</h2>
+          <p>{h.quality.text}</p>
+          <ul class="check-list" style="margin-top:22px;">
+            {
+              h.quality.items.map((i) => (
+                <li>
+                  <span class="dot"><Icon name="check" /></span>
+                  <p>{i}</p>
+                </li>
+              ))
+            }
+          </ul>
+          <a href={qualityPath} class="btn" style="margin-top:22px;">
+            {h.quality.cta} <Icon name="arrow" class="arw" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERTİFİKALAR ============ -->
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">{q.certsBlock.kicker}</div>
+        <h2 class="h-title">{q.certsBlock.title}</h2>
+        <p>{q.certsBlock.intro}</p>
+      </div>
+      <div class="cert-slider-wrap" style="margin-top:30px;">
+        <button type="button" class="cert-slider-arrow prev" data-cert-slide-prev aria-label={lang === 'tr' ? 'Önceki' : 'Previous'}>
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 5 L8 12 L15 19" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </button>
+        <div class="cert-slider" id="cert-slider">
+          {
+            q.certsBlock.items.map((c, i) => (
+              <div class="cert">
+                <button type="button" class="cert-zoom" data-cert-trigger={i} aria-label={lang === 'tr' ? 'Büyüt' : 'Zoom in'}>
+                  <img src={c.img} alt={`${c.code} ${c.name}`} width={certSize(c.img).w} height={certSize(c.img).h} loading="lazy" decoding="async" />
+                </button>
+                <h3>
+                  {c.code}
+                  <br />
+                  {c.name}
+                </h3>
+              </div>
+            ))
+          }
+        </div>
+        <button type="button" class="cert-slider-arrow next" data-cert-slide-next aria-label={lang === 'tr' ? 'Sonraki' : 'Next'}>
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 5 L16 12 L9 19" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </button>
+      </div>
+
+      <script>
+        document.addEventListener('click', (e) => {
+          const target = e.target as HTMLElement;
+          const dir = target.closest('[data-cert-slide-prev]') ? -1 : target.closest('[data-cert-slide-next]') ? 1 : 0;
+          if (!dir) return;
+          const track = document.getElementById('cert-slider');
+          if (!track) return;
+          const step = (track.querySelector('.cert')?.getBoundingClientRect().width ?? 260) + 20;
+          track.scrollBy({ left: dir * step, behavior: 'smooth' });
+        });
+      </script>
+
+      <div class="lightbox" id="cert-lightbox" hidden>
+        <button type="button" class="lightbox-close" data-cert-close aria-label={lang === 'tr' ? 'Kapat' : 'Close'}>
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6 18 18M18 6 6 18" /></svg>
+        </button>
+        <button type="button" class="lightbox-nav prev" data-cert-prev aria-label={lang === 'tr' ? 'Önceki' : 'Previous'}>
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 5 L8 12 L15 19" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </button>
+        <img src="" alt="" />
+        <button type="button" class="lightbox-nav next" data-cert-next aria-label={lang === 'tr' ? 'Sonraki' : 'Next'}>
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 5 L16 12 L9 19" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </button>
+      </div>
+
+      <script>
+        function initCertLightbox() {
+          const lightbox = document.getElementById('cert-lightbox');
+          const triggers = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-cert-trigger]'));
+          if (!lightbox || triggers.length === 0) return;
+
+          const lbImg = lightbox.querySelector('img');
+          let current = 0;
+
+          function open(index: number) {
+            current = (index + triggers.length) % triggers.length;
+            const img = triggers[current].querySelector('img');
+            if (lbImg && img) {
+              lbImg.src = img.src;
+              lbImg.alt = img.alt;
+            }
+            lightbox?.removeAttribute('hidden');
+          }
+          function close() {
+            lightbox?.setAttribute('hidden', '');
+          }
+
+          triggers.forEach((btn, i) => btn.addEventListener('click', () => open(i)));
+          lightbox.querySelector('[data-cert-close]')?.addEventListener('click', close);
+          lightbox.querySelector('[data-cert-prev]')?.addEventListener('click', () => open(current - 1));
+          lightbox.querySelector('[data-cert-next]')?.addEventListener('click', () => open(current + 1));
+          lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) close();
+          });
+          document.addEventListener('keydown', (e) => {
+            if (lightbox.hasAttribute('hidden')) return;
+            if (e.key === 'Escape') close();
+            if (e.key === 'ArrowLeft') open(current - 1);
+            if (e.key === 'ArrowRight') open(current + 1);
+          });
+        }
+        initCertLightbox();
+      </script>
+
+      <div style="text-align:center;margin-top:32px;">
+        <a href={`${qualityPath}#${q.certsBlock.id}`} class="btn">
+          {lang === 'tr' ? 'Tüm Sertifikaları Görüntüle' : 'View All Certificates'} <Icon name="arrow" class="arw" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SSS ============ -->
+  <section class="section-alt">
+    <div class="container">
+      <div class="split" style="align-items:start;gap:56px;">
+        <div data-reveal>
+          <div class="kicker">{h.faq.kicker}</div>
+          <h2 class="h-title">{h.faq.title}</h2>
+          <p>{h.faq.lead}</p>
+          <a href={contactPath} class="btn btn-solid" style="margin-top:10px;">
+            {t.common.contactUs} <Icon name="arrow" class="arw" />
+          </a>
+          <div class="faq-catalog-note">
+            <p>{h.ctaBand}</p>
+            <a href={catalogPath} class="btn btn-solid">
+              {t.common.viewCatalog} <Icon name="arrow" class="arw" />
+            </a>
+          </div>
+        </div>
+        <div class="accordion" data-reveal data-accordion>
+          {
+            h.faq.items.map((f, i) => (
+              <div class={`acc-item${i === 0 ? ' open' : ''}`}>
+                <button class="acc-head" type="button" aria-expanded={i === 0 ? 'true' : 'false'}>
+                  {f.q}
+                  <span class="sign" aria-hidden="true" />
+                </button>
+                <div class="acc-body">
+                  <div class="acc-body-inner">{f.a}</div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline type="application/ld+json" set:html={safeJsonLd(faqLd)} />
+
+</BaseLayout>

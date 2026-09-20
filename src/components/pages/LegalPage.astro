@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../PageHead.astro';
+import DocBlock from '../DocBlock.astro';
+import { useContent, type Lang, type RouteKey } from '../../i18n';
+
+interface Props {
+  lang: Lang;
+  topic: 'privacy' | 'kvkk' | 'cookies';
+}
+const { lang, topic } = Astro.props;
+const t = useContent(lang);
+const doc = t.legal[topic];
+const meta = t.meta[topic];
+const routeKey = topic as RouteKey;
+---
+
+<BaseLayout lang={lang} routeKey={routeKey} title={meta.title} description={meta.description}>
+  <PageHead lang={lang} crumb={doc.title} title={doc.title} bg="/img/hero-kapak.webp" />
+  <section class="section-tight">
+    <div class="container-narrow">
+      <DocBlock
+        id={topic}
+        kicker={doc.kicker}
+        title={doc.title}
+        paras={doc.paras}
+        sections={doc.sections}
+        outro={doc.outro}
+        signOff={doc.signOff}
+      />
+    </div>
+  </section>
+</BaseLayout>
