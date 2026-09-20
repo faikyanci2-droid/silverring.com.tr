@@ -3,6 +3,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHead from '../PageHead.astro';
 import DocLayout from '../DocLayout.astro';
 import DocBlock from '../DocBlock.astro';
+import Icon from '../Icon.astro';
+import type { IconName } from '../Icon.astro';
 import { useContent, type Lang } from '../../i18n';
 
 interface Props {
@@ -11,10 +13,39 @@ interface Props {
 const { lang } = Astro.props;
 const t = useContent(lang);
 const nav = t.services.blocks.map((b) => ({ label: b.title, hash: b.id }));
+const servicesLabel = lang === 'tr' ? 'Hizmetlerimiz' : 'Our Services';
+const servicesTitle = lang === 'tr' ? 'Uçtan Uca Teknik Çözümler' : 'End-to-End Technical Solutions';
 ---
 
 <BaseLayout lang={lang} routeKey="services" title={t.meta.services.title} description={t.meta.services.description} image="/img/product-development.webp">
   <PageHead lang={lang} crumb={t.nav.services} title={t.nav.services} lead={t.services.lead} bg="/img/product-development.webp" />
+
+  <section>
+    <div class="container">
+      <div class="section-head center">
+        <div class="kicker center">{servicesLabel}</div>
+        <h2 class="h-title">{servicesTitle}</h2>
+      </div>
+      <div class="grid grid-2 svc-grid">
+        {
+          t.services.blocks.map((b, i) => (
+            <a href={`#${b.id}`} class="svc-card" data-reveal>
+              <span class="svc-icon"><Icon name={b.icon as IconName} /></span>
+              <span class="svc-no">{String(i + 1).padStart(2, '0')}</span>
+              <h3>{b.title}</h3>
+              <p class="svc-summary">{b.summary}</p>
+              <ul class="svc-bullets">
+                {b.bullets.map((bl) => (
+                  <li>{bl}</li>
+                ))}
+              </ul>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
   <DocLayout nav={nav}>
     {
       t.services.blocks.map((b) => (
@@ -52,6 +83,47 @@ const nav = t.services.blocks.map((b) => ({ label: b.title, hash: b.id }));
 </BaseLayout>
 
 <style>
+  .svc-grid { gap: 20px; }
+  .svc-card {
+    position: relative;
+    display: block;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 30px 32px;
+    color: var(--ink);
+    transition: border-color .2s var(--ease), box-shadow .2s var(--ease), transform .2s var(--ease);
+  }
+  .svc-card:hover { border-color: var(--ink); box-shadow: var(--shadow-3); transform: translateY(-2px); }
+  .svc-icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 46px; height: 46px; border-radius: 3px;
+    border: 1px solid var(--line); color: var(--ink); margin-bottom: 18px;
+    transition: border-color .2s var(--ease);
+  }
+  .svc-card:hover .svc-icon { border-color: var(--ink); }
+  .svc-icon :global(svg) { width: 22px; height: 22px; }
+  .svc-no {
+    position: absolute; top: 28px; right: 32px;
+    font-family: var(--ff-display); font-weight: 700; font-size: 2.2rem;
+    color: var(--line); line-height: 1;
+  }
+  .svc-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; }
+  .svc-summary { font-size: .94rem; color: var(--steel); margin-bottom: 18px; }
+  .svc-bullets {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px 18px;
+    padding-top: 16px; border-top: 1px solid var(--line);
+  }
+  .svc-bullets li {
+    font-size: .86rem; color: var(--ink); position: relative; padding-left: 14px;
+  }
+  .svc-bullets li::before {
+    content: ""; position: absolute; left: 0; top: .55em;
+    width: 5px; height: 5px; border-radius: 50%; background: var(--ink);
+  }
+  @media (max-width: 560px) {
+    .svc-bullets { grid-template-columns: 1fr; }
+  }
+
   .process-flow {
     display: flex;
     align-items: stretch;

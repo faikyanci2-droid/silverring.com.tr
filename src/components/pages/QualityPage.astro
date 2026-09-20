@@ -3,6 +3,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHead from '../PageHead.astro';
 import DocLayout from '../DocLayout.astro';
 import DocBlock from '../DocBlock.astro';
+import Icon from '../Icon.astro';
+import type { IconName } from '../Icon.astro';
 import { useContent, type Lang } from '../../i18n';
 
 interface Props {
@@ -42,7 +44,11 @@ const certSize = (img: string) => (img.includes('irec') ? { w: 800, h: 1180 } : 
       <div class="grid grid-3" style="margin-top:30px;">
         {
           q.certsBlock.items.map((c, i) => (
-            <div class="cert">
+            <div class="cert cert-v2">
+              <div class="cert-badge-row">
+                <span class="cert-icon"><Icon name={c.icon as IconName} /></span>
+                <span class="cert-verified" aria-hidden="true"><Icon name="check" /></span>
+              </div>
               <button type="button" class="cert-zoom" data-cert-trigger={i} aria-label={lang === 'tr' ? 'Büyüt' : 'Zoom in'}>
                 <img src={c.img} alt={`${c.code} ${c.name}`} width={certSize(c.img).w} height={certSize(c.img).h} loading="lazy" />
               </button>
@@ -55,6 +61,22 @@ const certSize = (img: string) => (img.includes('irec') ? { w: 800, h: 1180 } : 
             </div>
           ))
         }
+      </div>
+
+      <div class="cert-stats-band">
+        <div class="kicker">{q.certsBlock.statsBand.kicker}</div>
+        <h3>{q.certsBlock.statsBand.title}</h3>
+        <p>{q.certsBlock.statsBand.text}</p>
+        <div class="cert-stats">
+          {
+            q.certsBlock.statsBand.stats.map((s) => (
+              <div class="cert-stat">
+                <span class="n">{s.n}</span>
+                <span class="l">{s.l}</span>
+              </div>
+            ))
+          }
+        </div>
       </div>
     </article>
 
@@ -126,3 +148,41 @@ const certSize = (img: string) => (img.includes('irec') ? { w: 800, h: 1180 } : 
     </article>
   </DocLayout>
 </BaseLayout>
+
+<style>
+  .cert-badge-row {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .cert-icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 3px;
+    border: 1px solid var(--line); color: var(--ink);
+  }
+  .cert-icon :global(svg) { width: 19px; height: 19px; }
+  .cert-verified {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 26px; height: 26px; border-radius: 50%;
+    border: 1px solid var(--line-soft); color: var(--steel-2);
+  }
+  .cert-verified :global(svg) { width: 13px; height: 13px; }
+
+  .cert-stats-band {
+    margin-top: 40px;
+    background: var(--ink);
+    color: #fff;
+    padding: 44px 40px;
+    text-align: center;
+  }
+  .cert-stats-band .kicker { justify-content: center; color: var(--steel-2); }
+  .cert-stats-band .kicker::before { background: var(--steel-2); }
+  .cert-stats-band h3 { font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-weight: 700; margin-bottom: 12px; }
+  .cert-stats-band p { color: #c4cbd4; max-width: 56ch; margin: 0 auto; }
+  .cert-stats {
+    display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+    margin-top: 30px; padding-top: 28px; border-top: 1px solid rgba(255, 255, 255, .16);
+  }
+  .cert-stat { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .cert-stat .n { font-family: var(--ff-display); font-weight: 700; font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--steel-2); }
+  .cert-stat .l { font-size: .84rem; color: #aeb7c2; text-transform: uppercase; letter-spacing: .08em; }
+</style>
