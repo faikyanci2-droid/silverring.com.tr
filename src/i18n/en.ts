@@ -26,6 +26,7 @@ const en: SiteContent = {
     closeMenu: 'Close menu',
     allRightsReserved: 'All rights reserved.',
     isoPartner: 'ISO 27001 Consulting',
+    seoCredit: 'SEO & Design',
     location: 'Gebze, Kocaeli — Türkiye',
     langLabel: 'Language',
     readMore: 'Read more',

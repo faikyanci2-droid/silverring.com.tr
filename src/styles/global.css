@@ -808,6 +808,9 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 .foot-legal a:hover { color: var(--ink); }
 
 .foot-bottom { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; font-size: .84rem; color: var(--steel); flex-wrap: wrap; gap: 10px; }
+.foot-bottom .foot-partner { color: inherit; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 3px; transition: color .2s, text-decoration-color .2s; }
+.foot-bottom .foot-partner:hover { text-decoration-color: currentColor; }
+.foot-bottom .foot-partner:hover { color: var(--ink); }
 
 /* ---------- Reveal on scroll ---------- */
 html.js [data-reveal]:not(.is-visible) { opacity: 0; transform: translateY(20px); }

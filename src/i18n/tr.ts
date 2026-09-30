@@ -25,6 +25,7 @@ const tr = {
     closeMenu: 'Menüyü kapat',
     allRightsReserved: 'Tüm hakları saklıdır.',
     isoPartner: 'ISO 27001 Danışmanlık',
+    seoCredit: 'SEO ve Tasarım',
     location: 'Gebze, Kocaeli — Türkiye',
     langLabel: 'Dil',
     readMore: 'Devamı',
