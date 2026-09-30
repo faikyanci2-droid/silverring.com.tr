@@ -4,7 +4,7 @@
 const tr = {
   company: {
     name: 'SilverRing',
-    legalName: 'SilverRing Metal Sanayi A.Ş.',
+    legalName: 'SilverRing Metal Sanayi Anonim Şirketi',
     tagline: 'Varil ve Bidon Aksesuarları İmalatı',
     phone: '0262 646 70 77',
     phoneHref: '+902626467077',
@@ -426,7 +426,7 @@ const tr = {
         kicker: 'Politika',
         title: 'Sürdürülebilir Tedarik Politikası',
         paras: [
-          'SILVERRING METAL SAN. A.Ş. olarak tüm paydaşlarımız ile güvene dayalı ilişkiler kurmayı önemsiyor, sorumlu ve sürdürülebilir tedarik zinciri yaklaşımımızı yaygınlaştırmayı hedefliyoruz. Sürdürülebilir bir değer yaratmak için çevresel, sosyal ve etik değerleri gözeten, toplumun gelişimine önem veren bir yaklaşım sergilerken aynı zamanda tüm tedarikçilerimiz ve paydaşlarımızın da benzer davranışı benimsemeleri için çaba gösteriyoruz. Bu kapsamda tüm tedarikçilerimiz ve iş ortaklarımız;',
+          'SILVERRING METAL SANAYİ ANONİM ŞİRKETİ olarak tüm paydaşlarımız ile güvene dayalı ilişkiler kurmayı önemsiyor, sorumlu ve sürdürülebilir tedarik zinciri yaklaşımımızı yaygınlaştırmayı hedefliyoruz. Sürdürülebilir bir değer yaratmak için çevresel, sosyal ve etik değerleri gözeten, toplumun gelişimine önem veren bir yaklaşım sergilerken aynı zamanda tüm tedarikçilerimiz ve paydaşlarımızın da benzer davranışı benimsemeleri için çaba gösteriyoruz. Bu kapsamda tüm tedarikçilerimiz ve iş ortaklarımız;',
         ],
         list: [
           'Çalışanlarına mevzuata ve çalışma şartlarına uygun haklar sağlamakla yükümlüdür.',
@@ -452,18 +452,18 @@ const tr = {
               'Süreçlerini yalın, katma değerli ve yenilikçi metotlarla tasarlayıp performans hedeflerini gerçekleştirir ve sürekli iyileştirir.',
               'Paydaşlar, kullanabilecekleri birçok şikâyet kanalına sahiptir ve şikâyetleri araştırmak için prosedürler geliştirilmiştir.',
               'Tüm işlemlerine ilişkin, gerçeği doğru, dürüst ve zamanında yansıtacak şekilde kayıt tutar. Kayıtlarında tahrifat yapmaz, gerçekleştirdiği işlemleri gizlemez. Kayıtlarını yasal gereklilikler doğrultusunda saklar.',
-              'Ticari sır, know-how ve finansal veriler dâhil, SILVERRING METAL SAN. A.Ş.\'ye ait ve erişimleri olan tüm gizli bilgileri korumakla yükümlüdür.',
+              'Ticari sır, know-how ve finansal veriler dâhil, SILVERRING METAL SANAYİ ANONİM ŞİRKETİ\'ne ait ve erişimleri olan tüm gizli bilgileri korumakla yükümlüdür.',
               'Faaliyetlerinde "çatışma minerallerini" kullanmamakla birlikte yasadışı çatışmaları destekleyen, insan haklarını ihlal eden ve finansman desteği veren her türlü eylemden kaçınır.',
             ],
           },
           {
             paras: [
-              'İş zihniyetimiz, yalnızca standartlarımızı ve spesifikasyonlarımızı tutarlı bir şekilde karşılama yeteneğine sahip ve kurumsal değerlerimiz ile uyumlu tedarikçilerle çalışmamızı gerektirir. Tedarikçilerimizden sadece kurallara uymalarını değil, aynı zamanda beklentilerin üzerine çıkmak için makul çabayı göstermelerini ve ticari faaliyetleri boyunca sürekli iyileştirmeyi teşvik etmelerini bekleriz. Kurallar, bu gereksinimleri kendi tedarik zincirlerine aktarması beklenen tüm sözleşmeli tedarikçilerimiz, iş ortaklarımız ve SILVERRING METAL SAN. A.Ş. için geçerlidir. Bu konuda tüm paydaşlarımızla iş birliği içinde olacağımızı taahhüt ederiz.',
+              'İş zihniyetimiz, yalnızca standartlarımızı ve spesifikasyonlarımızı tutarlı bir şekilde karşılama yeteneğine sahip ve kurumsal değerlerimiz ile uyumlu tedarikçilerle çalışmamızı gerektirir. Tedarikçilerimizden sadece kurallara uymalarını değil, aynı zamanda beklentilerin üzerine çıkmak için makul çabayı göstermelerini ve ticari faaliyetleri boyunca sürekli iyileştirmeyi teşvik etmelerini bekleriz. Kurallar, bu gereksinimleri kendi tedarik zincirlerine aktarması beklenen tüm sözleşmeli tedarikçilerimiz, iş ortaklarımız ve SILVERRING METAL SANAYİ ANONİM ŞİRKETİ için geçerlidir. Bu konuda tüm paydaşlarımızla iş birliği içinde olacağımızı taahhüt ederiz.',
             ],
           },
           {
             heading: 'Tedarikçi\'nin Beyanı',
-            paras: ['Biz, SILVERRING METAL SAN. A.Ş.\'nin tedarikçisi olarak;'],
+            paras: ['Biz, SILVERRING METAL SANAYİ ANONİM ŞİRKETİ\'nin tedarikçisi olarak;'],
             list: [
               'SILVERRING tarafından iletilen, SILVERRING Sürdürülebilir Tedarik Politikasını dikkatlice okuduğumuzu,',
               'Faaliyet gösterdiğimiz ülkedeki operasyonumuzla ilgili tüm yasa ve yönetmeliklerin farkında olduğumuzu,',
@@ -475,7 +475,7 @@ const tr = {
         ],
         outro: [
           'Ayrıca, işbu hüküm ile SILVERRING\'i ya da SILVERRING tarafından yetkilendirilen herhangi bir kuruluşu; kuruluşumuzun veya taşeron tedarikçilerimizin, SILVERRING Sürdürülebilir Tedarik Politikası uyumluluğunu doğrulamak adına, önceden bilgilendirme gereği olmaksızın denetim yapma konusunda yetkilendirdiğimizi peşinen kabul ve beyan ederiz.',
-          'SILVERRING METAL SAN. A.Ş., modern köleliğe karşı uygulamalarını iyileştirmeye devam etmeyi, üzerine düşen her türlü sorumluluğu yerine getirmeyi taahhüt eder.',
+          'SILVERRING METAL SANAYİ ANONİM ŞİRKETİ, modern köleliğe karşı uygulamalarını iyileştirmeye devam etmeyi, üzerine düşen her türlü sorumluluğu yerine getirmeyi taahhüt eder.',
         ],
         signOff: 'Genel Müdür',
         img: '',
@@ -492,7 +492,7 @@ const tr = {
         list: [
           'Şirketimiz, tüm çalışanları için güvenli ve adil çalışma koşulları sağlamakta ve çocuk işçi çalıştırılmaması, modern kölelikle mücadele konusunda iş kanununa, Uluslararası Çalışma Örgütü (ILO) anlaşmalarına, Birleşmiş Milletler Küresel İlkeler Sözleşmesine uygun hareket etmektedir.',
           'Modern kölelikle uğraşan hiçbir ortak, müşteri, tedarikçi, alt yüklenici, acente veya başka bir sıfatla görevlendirilen herhangi bir bireyle iş ilişkisi içerisine girmemektedir,',
-          'Bu politika ve beyanname, SILVERRING METAL SAN. A.Ş. bünyesinde çalışan her seviye personel için geçerlidir ve aşağıda sorumlulukları belirtilmiştir:',
+          'Bu politika ve beyanname, SILVERRING METAL SANAYİ ANONİM ŞİRKETİ bünyesinde çalışan her seviye personel için geçerlidir ve aşağıda sorumlulukları belirtilmiştir:',
           'Şirket içi ve şirket dışında modern köleliğe yönelik hiçbir suç ve konuyla bağlantılı olmamak,',
           'Modern kölelikle mücadelede, şirket tüm unsurları ile koordineli olarak çalışmak,',
           'Operasyonlarımızda ve tedarik zincirimizin herhangi bir aşamasında modern köleliğe karşı tetikte olmak,',
@@ -505,14 +505,14 @@ const tr = {
           {
             heading: 'Eğitim ve Bilgilendirme',
             list: [
-              'SILVERRING METAL SAN. A.Ş., bünyesindeki tüm çalışanlarının, bu politika ve beyannameye uygun davranmaları, modern kölelik kapsamındaki suçları tanıyabilmeleri ve kaçınmaları için gerekli eğitimleri almalarını sağlamaktadır,',
+              'SILVERRING METAL SANAYİ ANONİM ŞİRKETİ, bünyesindeki tüm çalışanlarının, bu politika ve beyannameye uygun davranmaları, modern kölelik kapsamındaki suçları tanıyabilmeleri ve kaçınmaları için gerekli eğitimleri almalarını sağlamaktadır,',
               'Şirketimiz, tedarik zincirinde bulunan her firmanın kendi çalışanlarına bu kapsamda eğitim vermesini beklemekte, sözleşmelerine şart olarak eklemekte ve herhangi bir sıfatla görevlendirilen her bireyi bilgilendirmektedir,',
             ],
           },
           {
             heading: 'İhlal Durumu',
             paras: [
-              'Herhangi bir SILVERRING METAL SAN. A.Ş. çalışanının modern kölelik suçlarına dahil olduğu ve bu politikayı ihlal ettiği durumda sıfır tolerans ilkesiyle gerekli yaptırım prosedürleri uygulanacaktır.',
+              'Herhangi bir SILVERRING METAL SANAYİ ANONİM ŞİRKETİ çalışanının modern kölelik suçlarına dahil olduğu ve bu politikayı ihlal ettiği durumda sıfır tolerans ilkesiyle gerekli yaptırım prosedürleri uygulanacaktır.',
               'Şirket operasyonları içerisinde modern köleliğe yönelik bir suç işlendiği tespit edildiği durumda;',
             ],
             list: [
@@ -524,7 +524,7 @@ const tr = {
         ],
         outro: [
           'Şirketimiz genelinde uygulamalardan, başta Genel Müdürümüz olmak üzere, tüm Yöneticilerimiz ve Çalışanlarımız sorumludur.',
-          'SILVERRING METAL SAN. A.Ş., modern köleliğe karşı uygulamalarını iyileştirmeye devam etmeyi, üzerine düşen her türlü sorumluluğu yerine getirmeyi taahhüt eder.',
+          'SILVERRING METAL SANAYİ ANONİM ŞİRKETİ, modern köleliğe karşı uygulamalarını iyileştirmeye devam etmeyi, üzerine düşen her türlü sorumluluğu yerine getirmeyi taahhüt eder.',
         ],
         signOff: 'Genel Müdür',
         img: '',
@@ -717,7 +717,7 @@ const tr = {
       id: 'uyelikler',
       kicker: 'Üyelik',
       title: 'İhracatçılar Birliği Üyeliği',
-      body: 'SilverRing Metal Sanayi A.Ş., ihracat faaliyetlerini kurumsal ve şeffaf bir yapı içinde yürütmek amacıyla ilgili ihracatçılar birliğine üyedir.',
+      body: 'SilverRing Metal Sanayi Anonim Şirketi, ihracat faaliyetlerini kurumsal ve şeffaf bir yapı içinde yürütmek amacıyla ilgili ihracatçılar birliğine üyedir.',
     },
     trademark: {
       id: 'marka-tescil',
@@ -839,7 +839,7 @@ const tr = {
       kicker: 'Yasal',
       title: 'Gizlilik Politikası',
       paras: [
-        'SilverRing Metal Sanayi A.Ş. ("SilverRing" veya "Şirketimiz") olarak, www.silverring.com.tr internet sitesini ("Site") ziyaret eden kullanıcılarımızın gizliliğine önem veriyoruz. Bu Gizlilik Politikası, Site üzerinden hangi bilgilerin toplandığını, bu bilgilerin nasıl kullanıldığını ve korunduğunu açıklamaktadır.',
+        'SilverRing Metal Sanayi Anonim Şirketi ("SilverRing" veya "Şirketimiz") olarak, www.silverring.com.tr internet sitesini ("Site") ziyaret eden kullanıcılarımızın gizliliğine önem veriyoruz. Bu Gizlilik Politikası, Site üzerinden hangi bilgilerin toplandığını, bu bilgilerin nasıl kullanıldığını ve korunduğunu açıklamaktadır.',
       ],
       sections: [
         {
@@ -872,19 +872,19 @@ const tr = {
         },
       ],
       outro: ['Bu politika, Site içeriğinde veya yasal düzenlemelerde değişiklik olması halinde güncellenebilir.'],
-      signOff: 'SilverRing Metal Sanayi A.Ş.',
+      signOff: 'SilverRing Metal Sanayi Anonim Şirketi',
     },
     kvkk: {
       kicker: 'Yasal',
       title: 'KVKK Aydınlatma Metni',
       paras: [
-        '6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") uyarınca, veri sorumlusu sıfatıyla SilverRing Metal Sanayi A.Ş. tarafından aşağıda açıklanan kapsamda kişisel verileriniz işlenmektedir.',
+        '6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") uyarınca, veri sorumlusu sıfatıyla SilverRing Metal Sanayi Anonim Şirketi tarafından aşağıda açıklanan kapsamda kişisel verileriniz işlenmektedir.',
       ],
       sections: [
         {
           heading: 'Veri Sorumlusu',
           paras: [
-            'SilverRing Metal Sanayi A.Ş., Gebze Güzeller O.S.B, İnönü Mah. Aşık Veysel Sok. No:2/1, Kocaeli / Türkiye adresinde faaliyet göstermektedir.',
+            'SilverRing Metal Sanayi Anonim Şirketi, Gebze Güzeller O.S.B, İnönü Mah. Aşık Veysel Sok. No:2/1, Kocaeli / Türkiye adresinde faaliyet göstermektedir.',
           ],
         },
         {
@@ -921,7 +921,7 @@ const tr = {
         },
       ],
       outro: ['Bu haklarınızı kullanmak için info@silverring.com.tr adresinden veya Merkez Fabrika adresimize yazılı olarak başvurabilirsiniz.'],
-      signOff: 'SilverRing Metal Sanayi A.Ş.',
+      signOff: 'SilverRing Metal Sanayi Anonim Şirketi',
     },
     cookies: {
       kicker: 'Yasal',
@@ -944,7 +944,7 @@ const tr = {
         },
       ],
       outro: ['Çerez tercihleriniz hakkında sorularınız için info@silverring.com.tr adresinden bize ulaşabilirsiniz.'],
-      signOff: 'SilverRing Metal Sanayi A.Ş.',
+      signOff: 'SilverRing Metal Sanayi Anonim Şirketi',
     },
   },
 };

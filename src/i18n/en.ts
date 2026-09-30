@@ -5,7 +5,7 @@ import type { SiteContent } from './tr';
 const en: SiteContent = {
   company: {
     name: 'SilverRing',
-    legalName: 'SilverRing Metal Sanayi A.Ş.',
+    legalName: 'SilverRing Metal Sanayi Anonim Şirketi',
     tagline: 'Manufacturer of Drum & Pail Accessories',
     phone: '0262 646 70 77',
     phoneHref: '+902626467077',
@@ -422,7 +422,7 @@ const en: SiteContent = {
         kicker: 'Policy',
         title: 'Sustainable Procurement Policy',
         paras: [
-          'As SILVERRING METAL SAN. A.Ş., we place importance on building trust-based relationships with all our stakeholders, and we aim to spread our responsible and sustainable supply chain approach. To create sustainable value, we adopt an approach that observes environmental, social and ethical values and prioritises the development of society, while also striving to have all our suppliers and stakeholders adopt similar conduct. Within this scope, all our suppliers and business partners;',
+          'As SILVERRING METAL SANAYİ ANONİM ŞİRKETİ, we place importance on building trust-based relationships with all our stakeholders, and we aim to spread our responsible and sustainable supply chain approach. To create sustainable value, we adopt an approach that observes environmental, social and ethical values and prioritises the development of society, while also striving to have all our suppliers and stakeholders adopt similar conduct. Within this scope, all our suppliers and business partners;',
         ],
         list: [
           'Are obliged to provide their employees with rights in accordance with legislation and working conditions.',
@@ -448,18 +448,18 @@ const en: SiteContent = {
               'Designs its processes with lean, value-added and innovative methods, achieves its performance targets and continuously improves.',
               'Ensures stakeholders have access to a number of complaint channels, and that procedures have been developed to investigate complaints.',
               'Keeps records reflecting the truth accurately, honestly and in a timely manner for all its transactions. It does not falsify its records or conceal the transactions it carries out. It retains its records in line with legal requirements.',
-              'Is obliged to protect all confidential information belonging to, and accessed through, SILVERRING METAL SAN. A.Ş., including trade secrets, know-how and financial data.',
+              'Is obliged to protect all confidential information belonging to, and accessed through, SILVERRING METAL SANAYİ ANONİM ŞİRKETİ, including trade secrets, know-how and financial data.',
               'Avoids the use of "conflict minerals" in its activities, and avoids any act that supports illegal conflicts, violates human rights or provides financial support to such acts.',
             ],
           },
           {
             paras: [
-              'Our business mentality requires us to work with suppliers who are capable of consistently meeting our standards and specifications and who are aligned with our corporate values. We expect our suppliers not only to comply with the rules, but also to make reasonable efforts to exceed expectations and to encourage continuous improvement throughout their commercial activities. The rules apply to all our contracted suppliers, business partners and SILVERRING METAL SAN. A.Ş., who are expected to pass these requirements on to their own supply chains. We commit to cooperating with all our stakeholders in this regard.',
+              'Our business mentality requires us to work with suppliers who are capable of consistently meeting our standards and specifications and who are aligned with our corporate values. We expect our suppliers not only to comply with the rules, but also to make reasonable efforts to exceed expectations and to encourage continuous improvement throughout their commercial activities. The rules apply to all our contracted suppliers, business partners and SILVERRING METAL SANAYİ ANONİM ŞİRKETİ, who are expected to pass these requirements on to their own supply chains. We commit to cooperating with all our stakeholders in this regard.',
             ],
           },
           {
             heading: 'Supplier\'s Declaration',
-            paras: ['As a supplier of SILVERRING METAL SAN. A.Ş., we;'],
+            paras: ['As a supplier of SILVERRING METAL SANAYİ ANONİM ŞİRKETİ, we;'],
             list: [
               'Declare that we have carefully read the SILVERRING Sustainable Procurement Policy communicated to us by SILVERRING,',
               'Declare that we are aware of all laws and regulations relating to our operations in the country in which we operate,',
@@ -471,7 +471,7 @@ const en: SiteContent = {
         ],
         outro: [
           'Furthermore, by this provision, we irrevocably accept and declare that we authorise SILVERRING, or any organisation authorised by SILVERRING, to carry out audits — without any requirement of prior notice — in order to verify our organisation\'s or our subcontracted suppliers\' compliance with the SILVERRING Sustainable Procurement Policy.',
-          'SILVERRING METAL SAN. A.Ş. commits to continuing to improve its practices against modern slavery and to fulfil every responsibility incumbent upon it.',
+          'SILVERRING METAL SANAYİ ANONİM ŞİRKETİ commits to continuing to improve its practices against modern slavery and to fulfil every responsibility incumbent upon it.',
         ],
         signOff: 'General Manager',
         img: '',
@@ -488,7 +488,7 @@ const en: SiteContent = {
         list: [
           'Provides safe and fair working conditions for all its employees and acts in accordance with labour law, the conventions of the International Labour Organization (ILO) and the United Nations Global Compact regarding the non-employment of child labour and the fight against modern slavery.',
           'Does not enter into a business relationship with any partner, customer, supplier, subcontractor, agent or any other individual engaged in any capacity who is involved in modern slavery,',
-          'This policy and statement applies to personnel at every level employed within SILVERRING METAL SAN. A.Ş., and the responsibilities are set out below:',
+          'This policy and statement applies to personnel at every level employed within SILVERRING METAL SANAYİ ANONİM ŞİRKETİ, and the responsibilities are set out below:',
           'Not to be connected, within or outside the company, to any crime or matter relating to modern slavery,',
           'To work in a coordinated manner with every element of the company in the fight against modern slavery,',
           'To remain vigilant against modern slavery in our operations and at any stage of our supply chain,',
@@ -501,14 +501,14 @@ const en: SiteContent = {
           {
             heading: 'Training and Awareness',
             list: [
-              'SILVERRING METAL SAN. A.Ş. ensures that all its employees receive the necessary training to act in accordance with this policy and statement and to be able to recognise and avoid crimes falling within the scope of modern slavery,',
+              'SILVERRING METAL SANAYİ ANONİM ŞİRKETİ ensures that all its employees receive the necessary training to act in accordance with this policy and statement and to be able to recognise and avoid crimes falling within the scope of modern slavery,',
               'Our company expects every company in its supply chain to provide training to its own employees in this regard, adds this as a condition to its contracts, and informs every individual engaged in any capacity,',
             ],
           },
           {
             heading: 'In the Event of a Violation',
             paras: [
-              'Should any SILVERRING METAL SAN. A.Ş. employee be involved in crimes relating to modern slavery and violate this policy, the necessary sanction procedures will be applied on a zero-tolerance basis.',
+              'Should any SILVERRING METAL SANAYİ ANONİM ŞİRKETİ employee be involved in crimes relating to modern slavery and violate this policy, the necessary sanction procedures will be applied on a zero-tolerance basis.',
               'Where it is determined that a crime relating to modern slavery has been committed within the company\'s operations;',
             ],
             list: [
@@ -520,7 +520,7 @@ const en: SiteContent = {
         ],
         outro: [
           'Responsibility for practices across our company lies with our General Manager first, and with all our Managers and Employees.',
-          'SILVERRING METAL SAN. A.Ş. commits to continuing to improve its practices against modern slavery and to fulfil every responsibility incumbent upon it.',
+          'SILVERRING METAL SANAYİ ANONİM ŞİRKETİ commits to continuing to improve its practices against modern slavery and to fulfil every responsibility incumbent upon it.',
         ],
         signOff: 'General Manager',
         img: '',
@@ -835,7 +835,7 @@ const en: SiteContent = {
       kicker: 'Legal',
       title: 'Privacy Policy',
       paras: [
-        'SilverRing Metal Sanayi A.Ş. ("SilverRing" or "we") values the privacy of visitors to www.silverring.com.tr ("the Site"). This Privacy Policy explains what information is collected through the Site, how it is used and how it is protected.',
+        'SilverRing Metal Sanayi Anonim Şirketi ("SilverRing" or "we") values the privacy of visitors to www.silverring.com.tr ("the Site"). This Privacy Policy explains what information is collected through the Site, how it is used and how it is protected.',
       ],
       sections: [
         {
@@ -868,19 +868,19 @@ const en: SiteContent = {
         },
       ],
       outro: ['This policy may be updated in the event of changes to the Site or to applicable law.'],
-      signOff: 'SilverRing Metal Sanayi A.Ş.',
+      signOff: 'SilverRing Metal Sanayi Anonim Şirketi',
     },
     kvkk: {
       kicker: 'Legal',
       title: 'Personal Data Protection Notice',
       paras: [
-        'Under Turkish Law No. 6698 on the Protection of Personal Data ("KVKK"), SilverRing Metal Sanayi A.Ş. processes your personal data as the data controller, within the scope described below.',
+        'Under Turkish Law No. 6698 on the Protection of Personal Data ("KVKK"), SilverRing Metal Sanayi Anonim Şirketi processes your personal data as the data controller, within the scope described below.',
       ],
       sections: [
         {
           heading: 'Data Controller',
           paras: [
-            'SilverRing Metal Sanayi A.Ş. operates at Gebze Güzeller O.S.B, İnönü Mah. Aşık Veysel Sok. No:2/1, Kocaeli, Türkiye.',
+            'SilverRing Metal Sanayi Anonim Şirketi operates at Gebze Güzeller O.S.B, İnönü Mah. Aşık Veysel Sok. No:2/1, Kocaeli, Türkiye.',
           ],
         },
         {
@@ -917,7 +917,7 @@ const en: SiteContent = {
         },
       ],
       outro: ['To exercise these rights, you may apply in writing to info@silverring.com.tr or to our headquarters plant address.'],
-      signOff: 'SilverRing Metal Sanayi A.Ş.',
+      signOff: 'SilverRing Metal Sanayi Anonim Şirketi',
     },
     cookies: {
       kicker: 'Legal',
@@ -940,7 +940,7 @@ const en: SiteContent = {
         },
       ],
       outro: ['If you have questions about your cookie preferences, you can reach us at info@silverring.com.tr.'],
-      signOff: 'SilverRing Metal Sanayi A.Ş.',
+      signOff: 'SilverRing Metal Sanayi Anonim Şirketi',
     },
   },
 };

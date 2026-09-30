@@ -17,7 +17,7 @@ const { lang, routeKey, title, description, image = '/img/anasayfa-genel.webp', 
 const t = useContent(lang);
 
 const site = Astro.site ?? new URL('https://www.silverring.com.tr');
-// Kısa marka adı kullanılır: tam unvan ("... Metal Sanayi A.Ş.") eklenirse SERP'te başlık kırpılıyordu.
+// Kısa marka adı kullanılır: tam unvan ("... Metal Sanayi Anonim Şirketi") eklenirse SERP'te başlık kırpılıyordu.
 const pageTitle = `${title} | ${t.company.name}`;
 const canonical = routeKey ? new URL(routes[routeKey][lang], site).href : undefined;
 const ogImage = new URL(image, site).href;
@@ -33,8 +33,9 @@ const alternates: { hreflang: string; href: string }[] = routeKey
 const orgLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: t.company.legalName,
-  alternateName: 'SilverRing',
+  name: t.company.name,
+  legalName: t.company.legalName,
+  alternateName: ['SilverRing Metal Sanayi A.Ş.', 'SILVERRING METAL SANAYİ ANONİM ŞİRKETİ'],
   url: site.href,
   logo: new URL('/img/logo.png', site).href,
   email: t.company.email,
